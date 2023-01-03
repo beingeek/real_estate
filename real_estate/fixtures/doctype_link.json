@@ -1,0 +1,19 @@
+[
+ {
+  "custom": 1,
+  "docstatus": 0,
+  "doctype": "DocType Link",
+  "group": "Blocks",
+  "hidden": 0,
+  "is_child_table": 0,
+  "link_doctype": "Block",
+  "link_fieldname": "project",
+  "modified": "2023-01-02 17:58:33.623502",
+  "name": "de604f1e0b",
+  "parent": "Project",
+  "parent_doctype": null,
+  "parentfield": "links",
+  "parenttype": "Customize Form",
+  "table_fieldname": null
+ }
+]

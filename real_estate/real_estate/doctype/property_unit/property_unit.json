@@ -1,0 +1,195 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:",
+ "creation": "2022-12-29 15:00:40.832544",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "unit_details_section",
+  "unit_number",
+  "floor",
+  "column_break_11",
+  "block",
+  "title",
+  "features_section",
+  "unit_template",
+  "land_area_unit",
+  "location",
+  "facing",
+  "column_break_4",
+  "rooms",
+  "land_area",
+  "price",
+  "type",
+  "status_section",
+  "booking_status"
+ ],
+ "fields": [
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Features"
+  },
+  {
+   "fetch_from": "unit_template.location",
+   "fetch_if_empty": 1,
+   "fieldname": "location",
+   "fieldtype": "Data",
+   "label": "Location"
+  },
+  {
+   "fetch_from": "unit_template.facing",
+   "fetch_if_empty": 1,
+   "fieldname": "facing",
+   "fieldtype": "Select",
+   "label": "Facing",
+   "options": "\nNorth\nEast\nWest\nSouth"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "unit_template.land_area",
+   "fieldname": "land_area",
+   "fieldtype": "Float",
+   "label": "Land Area",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "unit_template.type",
+   "fetch_if_empty": 1,
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Type",
+   "options": "Property Type",
+   "reqd": 1
+  },
+  {
+   "fieldname": "unit_details_section",
+   "fieldtype": "Section Break",
+   "label": "Unit Details"
+  },
+  {
+   "fieldname": "block",
+   "fieldtype": "Link",
+   "label": "Block",
+   "options": "Block",
+   "reqd": 1
+  },
+  {
+   "fieldname": "floor",
+   "fieldtype": "Link",
+   "label": "Floor",
+   "options": "Floor",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "unit_template.land_area_unit",
+   "fetch_if_empty": 1,
+   "fieldname": "land_area_unit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Land Area Unit",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "unit_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Unit Number",
+   "reqd": 1,
+   "set_only_once": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Series",
+   "options": "UNIT-",
+   "set_only_once": 1
+  },
+  {
+   "fieldname": "unit_template",
+   "fieldtype": "Link",
+   "label": "Unit Template",
+   "options": "Unit Template"
+  },
+  {
+   "fetch_from": "unit_template.rooms",
+   "fetch_if_empty": 1,
+   "fieldname": "rooms",
+   "fieldtype": "Int",
+   "label": "No. of Rooms"
+  },
+  {
+   "fetch_from": "unit_template.price",
+   "fetch_if_empty": 1,
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price"
+  },
+  {
+   "fieldname": "booking_status",
+   "fieldtype": "Select",
+   "label": "Booking Status",
+   "options": "\nBooked\nAvailable",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Bookings",
+   "link_doctype": "Property Booking Order",
+   "link_fieldname": "property_unit"
+  }
+ ],
+ "modified": "2023-01-02 16:50:45.413966",
+ "modified_by": "Administrator",
+ "module": "Real Estate",
+ "name": "Property Unit",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}
