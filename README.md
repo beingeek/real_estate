@@ -1,6 +1,6 @@
 ## Real Estate
 
-App for Real Estate Automation
+Frappe App for Real Estate Automation (ERPNext Enhancement)
 
 #### License
 
