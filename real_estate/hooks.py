@@ -113,23 +113,24 @@ doc_events = {
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-#	"all": [
-#		"real_estate.tasks.all"
-#	],
-#	"daily": [
-#		"real_estate.tasks.daily"
-#	],
-#	"hourly": [
-#		"real_estate.tasks.hourly"
-#	],
-#	"weekly": [
-#		"real_estate.tasks.weekly"
-#	],
-#	"monthly": [
-#		"real_estate.tasks.monthly"
-#	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"real_estate.tasks.all"
+	# ],
+	"daily": [
+		"erpnext.assets.doctype.asset.depreciation.post_depreciation_entries",
+		"real_estate.real_estate.doctype.property_booking_order.property_booking_order.process_scheduled_installments"
+	],
+	# "hourly": [
+	# 	"real_estate.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"real_estate.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"real_estate.tasks.monthly"
+	# ],
+}
 
 # Testing
 # -------

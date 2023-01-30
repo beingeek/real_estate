@@ -3,7 +3,7 @@
 
 import frappe, erpnext
 from frappe import _
-from frappe.utils import cstr, getdate, flt, add_to_date
+from frappe.utils import cstr, getdate, flt, add_to_date, today
 from erpnext.controllers.accounts_controller import AccountsController
 from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
 from frappe.model.document import Document
@@ -256,15 +256,17 @@ def create_sales_invoice(property_booking_order, schedule_row_name):
 	sales_invoice.save()
 	sales_invoice.submit()
 
-@frappe.whitelist()
-def process_scheduled_installments():
-	installments = get_all_due_installments()
+
+def process_scheduled_installments(date=None):
+	if not date:
+		date = today()
+
+	installments = get_all_due_installments(date)
 	for d in installments:
 		create_sales_invoice(d.property_booking_order, d.schedule_row_name)
 
 
-
-def get_all_due_installments():
+def get_all_due_installments(date):
 	pps = frappe.qb.DocType('Property Payment Schedule')
 	pbo = frappe.qb.DocType('Property Booking Order')
 	return (
@@ -273,7 +275,7 @@ def get_all_due_installments():
 			.select(
 				pbo.name.as_("property_booking_order"), pps.name.as_("schedule_row_name")
 			)
-			.where(pps.is_installment == 1).where(pps.due_date <= frappe.utils.today())
+			.where(pps.is_installment == 1).where(pps.due_date <= date)
 			.orderby(pbo.name).orderby(pps.due_date)
 	).run(as_dict=True)
 
