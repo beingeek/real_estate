@@ -3,22 +3,22 @@
 
 import frappe
 from frappe import _
+from erpnext.controllers.status_updater import StatusUpdater
 from frappe.model.document import Document
 
 
-class PropertyUnit(Document):
+class PropertyUnit(StatusUpdater):
 	def validate(self):
 		self.set_title()
+		self.set_status()
 
 	def set_title(self):
 		self.title = "-".join(filter(None, [self.unit_number, self.block]))
 
-	def update_status(self, booking_order, update=False, booked=True):
-		bookings_for_this_unit = frappe.db.get_all('Property Booking Order', {'property_unit': self.name, 'name': ['!=', booking_order]})
-		if bookings_for_this_unit:
-			frappe.throw(_('Property Unit Already Booked'))
+	def set_status(self, update=False, status=None, update_modified=False):
+		bookings = frappe.get_all('Property Booking Order', {'property_unit': self.name, 'docstatus': 1})
 
-		if booked:
+		if bookings:
 			self.booking_status = 'Booked'
 		else:
 			self.booking_status = 'Available'

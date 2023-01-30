@@ -1,0 +1,102 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2023-01-10 16:27:43.992150",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "payment_plan_type",
+  "start_date",
+  "is_installment",
+  "column_break_4",
+  "no_of_installment",
+  "invoice_interval",
+  "invoice_interval_count",
+  "column_break_2",
+  "invoice_amount"
+ ],
+ "fields": [
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "columns": 2,
+   "fieldname": "payment_plan_type",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Payment Plan Type",
+   "options": "Payment Plan Type",
+   "reqd": 1
+  },
+  {
+   "columns": 2,
+   "fieldname": "invoice_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Invoice Amount"
+  },
+  {
+   "columns": 1,
+   "fieldname": "invoice_interval",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Invoice Interval",
+   "mandatory_depends_on": "eval: doc.is_installment",
+   "options": "\nDay\nWeek\nMonth\nYear",
+   "read_only_depends_on": "eval: !doc.is_installment"
+  },
+  {
+   "columns": 1,
+   "fieldname": "invoice_interval_count",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Interval Count",
+   "mandatory_depends_on": "eval: doc.is_installment",
+   "read_only_depends_on": "eval: !doc.is_installment"
+  },
+  {
+   "columns": 1,
+   "default": "0",
+   "fieldname": "is_installment",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "Is Installment"
+  },
+  {
+   "columns": 1,
+   "fieldname": "no_of_installment",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "No of Installment",
+   "mandatory_depends_on": "eval: doc.is_installment",
+   "read_only_depends_on": "eval: !doc.is_installment"
+  },
+  {
+   "columns": 2,
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Start Date"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-01-30 13:40:33.541979",
+ "modified_by": "Administrator",
+ "module": "Real Estate",
+ "name": "Property Payment Plan",
+ "naming_rule": "Random",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

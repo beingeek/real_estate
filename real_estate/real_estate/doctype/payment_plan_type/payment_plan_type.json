@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:plan_name",
+ "creation": "2023-01-10 16:22:58.035448",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "plan_name",
+  "transaction_item",
+  "trigger_on_booking_order",
+  "trigger_on_project_start",
+  "trigger_on_project_end",
+  "column_break_3",
+  "description"
+ ],
+ "fields": [
+  {
+   "fieldname": "plan_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Plan Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "transaction_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Transaction Item",
+   "no_copy": 1,
+   "options": "Item",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "allow_in_quick_entry": 1,
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "in_list_view": 1,
+   "label": "Description",
+   "no_copy": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "trigger_on_project_start",
+   "fieldtype": "Check",
+   "label": "Trigger on Project Start",
+   "no_copy": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "trigger_on_project_end",
+   "fieldtype": "Check",
+   "label": "Trigger on Project End",
+   "no_copy": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "trigger_on_booking_order",
+   "fieldtype": "Check",
+   "label": "Trigger on Booking Order",
+   "no_copy": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-01-25 16:14:54.830387",
+ "modified_by": "Administrator",
+ "module": "Real Estate",
+ "name": "Payment Plan Type",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

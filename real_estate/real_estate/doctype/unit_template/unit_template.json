@@ -10,20 +10,26 @@
  "field_order": [
   "naming_series",
   "template_name",
-  "land_area_unit",
-  "location",
   "facing",
+  "type",
+  "is_corner_field",
+  "is_road_side",
   "column_break_4",
+  "payment_plan_template",
+  "project",
   "rooms",
-  "land_area",
+  "column_break_9",
+  "location",
   "price",
-  "type"
+  "land_area_unit",
+  "land_area"
  ],
  "fields": [
   {
    "fieldname": "location",
-   "fieldtype": "Data",
-   "label": "Location"
+   "fieldtype": "Link",
+   "label": "Location",
+   "options": "Address"
   },
   {
    "fieldname": "facing",
@@ -83,11 +89,40 @@
    "fieldtype": "Currency",
    "label": "Price",
    "reqd": 1
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_corner_field",
+   "fieldtype": "Check",
+   "label": "Is Corner Field"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_road_side",
+   "fieldtype": "Check",
+   "label": "Is Road Side"
+  },
+  {
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project",
+   "reqd": 1
+  },
+  {
+   "fieldname": "payment_plan_template",
+   "fieldtype": "Link",
+   "label": "Payment Plan Template",
+   "options": "Property Payment Plan Template"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-30 17:18:34.664717",
+ "modified": "2023-01-25 16:53:16.571825",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Unit Template",

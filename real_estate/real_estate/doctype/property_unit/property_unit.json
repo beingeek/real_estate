@@ -11,35 +11,39 @@
   "naming_series",
   "unit_details_section",
   "unit_number",
-  "floor",
-  "column_break_11",
-  "block",
   "title",
+  "column_break_5",
+  "floor",
+  "block",
+  "column_break_11",
+  "company",
   "features_section",
   "unit_template",
-  "land_area_unit",
-  "location",
   "facing",
-  "column_break_4",
-  "rooms",
-  "land_area",
-  "price",
   "type",
+  "is_corner_field",
+  "is_road_side",
+  "column_break_4",
+  "payment_plan_template",
+  "project",
+  "rooms",
+  "column_break_20",
+  "location",
+  "price",
+  "land_area_unit",
+  "land_area",
   "status_section",
   "booking_status"
  ],
  "fields": [
   {
-   "fieldname": "features_section",
-   "fieldtype": "Section Break",
-   "label": "Features"
-  },
-  {
    "fetch_from": "unit_template.location",
    "fetch_if_empty": 1,
    "fieldname": "location",
-   "fieldtype": "Data",
-   "label": "Location"
+   "fieldtype": "Link",
+   "label": "Location",
+   "no_copy": 1,
+   "options": "Address"
   },
   {
    "fetch_from": "unit_template.facing",
@@ -47,6 +51,7 @@
    "fieldname": "facing",
    "fieldtype": "Select",
    "label": "Facing",
+   "no_copy": 1,
    "options": "\nNorth\nEast\nWest\nSouth"
   },
   {
@@ -55,9 +60,11 @@
   },
   {
    "fetch_from": "unit_template.land_area",
+   "fetch_if_empty": 1,
    "fieldname": "land_area",
    "fieldtype": "Float",
    "label": "Land Area",
+   "no_copy": 1,
    "reqd": 1
   },
   {
@@ -67,6 +74,7 @@
    "fieldtype": "Link",
    "in_list_view": 1,
    "label": "Type",
+   "no_copy": 1,
    "options": "Property Type",
    "reqd": 1
   },
@@ -78,6 +86,7 @@
   {
    "fieldname": "block",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Block",
    "options": "Block",
    "reqd": 1
@@ -85,6 +94,7 @@
   {
    "fieldname": "floor",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Floor",
    "options": "Floor",
    "reqd": 1
@@ -108,6 +118,7 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Unit Number",
+   "no_copy": 1,
    "reqd": 1,
    "set_only_once": 1,
    "unique": 1
@@ -138,14 +149,18 @@
    "fetch_if_empty": 1,
    "fieldname": "rooms",
    "fieldtype": "Int",
-   "label": "No. of Rooms"
+   "label": "No. of Rooms",
+   "no_copy": 1,
+   "reqd": 1
   },
   {
    "fetch_from": "unit_template.price",
    "fetch_if_empty": 1,
    "fieldname": "price",
    "fieldtype": "Currency",
-   "label": "Price"
+   "label": "Price",
+   "no_copy": 1,
+   "reqd": 1
   },
   {
    "fieldname": "booking_status",
@@ -155,9 +170,64 @@
    "read_only": 1
   },
   {
+   "collapsible": 1,
    "fieldname": "status_section",
    "fieldtype": "Section Break",
-   "label": "Status"
+   "label": "More Details"
+  },
+  {
+   "fetch_from": "unit_template.payment_plan_template",
+   "fetch_if_empty": 1,
+   "fieldname": "payment_plan_template",
+   "fieldtype": "Link",
+   "label": "Payment Plan Template",
+   "no_copy": 1,
+   "options": "Property Payment Plan Template"
+  },
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Features"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "remember_last_selected_value": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fetch_from": "unit_template.is_corner_field",
+   "fetch_if_empty": 1,
+   "fieldname": "is_corner_field",
+   "fieldtype": "Check",
+   "label": "Is Corner Field"
+  },
+  {
+   "default": "0",
+   "fetch_from": "unit_template.is_road_side",
+   "fetch_if_empty": 1,
+   "fieldname": "is_road_side",
+   "fieldtype": "Check",
+   "label": "Is Road Side"
+  },
+  {
+   "fetch_from": "unit_template.project",
+   "fetch_if_empty": 1,
+   "fieldname": "project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Project"
+  },
+  {
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -168,7 +238,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2023-01-02 16:50:45.413966",
+ "modified": "2023-01-25 17:04:42.254217",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",

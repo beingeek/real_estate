@@ -10,7 +10,6 @@
  "engine": "InnoDB",
  "field_order": [
   "property_type_name",
-  "image",
   "lft",
   "rgt",
   "is_group",
@@ -23,13 +22,9 @@
    "fieldtype": "Data",
    "in_list_view": 1,
    "label": "Property Type Name",
+   "no_copy": 1,
    "reqd": 1,
    "unique": 1
-  },
-  {
-   "fieldname": "image",
-   "fieldtype": "Attach Image",
-   "label": "Image"
   },
   {
    "fieldname": "lft",
@@ -75,13 +70,14 @@
    "ignore_user_permissions": 1,
    "in_list_view": 1,
    "label": "Parent Property Type",
+   "no_copy": 1,
    "options": "Property Type"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2022-12-29 16:41:52.694147",
+ "modified": "2023-01-30 15:07:48.737300",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Type",
