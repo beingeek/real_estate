@@ -102,13 +102,13 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	"Sales Invoice": {
+		"validate": "real_estate.real_estate.doctype.property_booking_order.property_booking_order.validate_sales_invoice",
+		"on_submit": "real_estate.real_estate.doctype.property_booking_order.property_booking_order.link_sales_invoice_in_payment_schedule",
+		"on_cancel": "real_estate.real_estate.doctype.property_booking_order.property_booking_order.unlink_sales_invoice_in_payment_schedule",
+	},
+}
 
 # Scheduled Tasks
 # ---------------
