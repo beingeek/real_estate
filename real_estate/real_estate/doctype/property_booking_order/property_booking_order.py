@@ -254,7 +254,7 @@ def make_sales_invoice(property_booking_order, schedule_row_name):
 def create_sales_invoice(property_booking_order, schedule_row_name):
 	sales_invoice = make_sales_invoice(property_booking_order, schedule_row_name)
 	sales_invoice.save()
-	sales_invoice.submit()
+	# sales_invoice.submit()
 
 
 def process_scheduled_installments(date=None):
