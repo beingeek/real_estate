@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"type\":\"card\",\"data\":{\"card_name\":\"Master Data\",\"col\":3}}]",
+ "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
  "creation": "2022-12-30 17:47:24.454862",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -42,7 +42,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Master Data",
+   "label": "Settings",
    "link_count": 4,
    "onboard": 0,
    "type": "Card Break"
@@ -88,7 +88,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-01-30 18:27:05.764361",
+ "modified": "2023-01-31 14:22:43.953285",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate",
