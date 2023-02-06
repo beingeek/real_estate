@@ -19,17 +19,24 @@ real_estate.PropertyBookingOrder = class PropertyBookingOrder extends frappe.ui.
 
 	payment_plan_template() {
 		let me = this;
-		return frappe.call({
-			method: "real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template.get_payment_plan",
-			args: {
-				plan_template: me.frm.doc.payment_plan_template
-			},
-			callback: function(r) {
-				if (r.message && !r.exc) {
-					return me.frm.set_value("payment_plan", r.message);
-				}
+		if (me.frm.doc.payment_plan_template) {
+			if (me.frm.doc.payment_plan) {
+				frappe.confirm('Are you sure you want to remake Payment Plan?',
+				() => {
+					return frappe.call({
+						method: "real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template.get_payment_plan",
+						args: {
+							plan_template: me.frm.doc.payment_plan_template
+						},
+						callback: function(r) {
+							if (r.message && !r.exc) {
+								return me.frm.set_value("payment_plan", r.message);
+							}
+						}
+					});
+				}, () => { })
 			}
-		});
+		}
 	}
 
 	property_unit() {
