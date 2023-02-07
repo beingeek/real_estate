@@ -83,13 +83,14 @@
    "fieldname": "start_date",
    "fieldtype": "Date",
    "in_list_view": 1,
-   "label": "Start Date"
+   "label": "Start Date",
+   "mandatory_depends_on": "eval: doc.is_installment"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2023-01-30 13:40:33.541979",
+ "modified": "2023-02-07 15:40:05.114352",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Payment Plan",
