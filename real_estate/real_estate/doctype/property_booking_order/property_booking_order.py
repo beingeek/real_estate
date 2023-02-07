@@ -1,15 +1,13 @@
 # Copyright (c) 2022, ParaLogic and contributors
 # For license information, please see license.txt
 
-import frappe, erpnext
+import frappe
 from frappe import _
-from frappe.utils import cstr, getdate, flt, add_to_date, today
-from erpnext.controllers.accounts_controller import AccountsController
-from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
 from frappe.model.document import Document
+from frappe.utils import cint, cstr, getdate, flt, add_to_date, today
+from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
 import json
 from six import string_types
-
 
 force_fields = [
 	'floor', 'type', 'total_price', 'unit_number'
@@ -37,15 +35,14 @@ class PropertyBookingOrder(Document):
 
 	def on_submit(self):
 		self.update_property_unit()
-		self.trigger_invoices_on_booking_order()
+		self.trigger_invoices_on_submit()
 
 	def on_cancel(self):
 		self.update_property_unit()
 
-	def trigger_invoices_on_booking_order(self):
+	def trigger_invoices_on_submit(self):
 		for payment in self.payment_schedule:
-			plan_type = frappe.get_cached_doc('Payment Plan Type', payment.payment_plan_type)
-			if plan_type.get('trigger_on_booking_order'):
+			if getdate(payment.due_date) < getdate(today()):
 				create_sales_invoice(self.name, payment.name)
 
 	def validate_property_unit_already_booked(self):
@@ -65,10 +62,21 @@ class PropertyBookingOrder(Document):
 				self.append("payment_plan", d)
 
 	def set_payment_plan_dates(self):
+		self.set_booking_order_date()
+		self.set_project_trigger_dates()
+
+	def set_booking_order_date(self):
 		for plan in self.payment_plan:
-			plan_type = frappe.get_cached_doc('Payment Plan Type', plan.payment_plan_type)
-			if plan_type.get('trigger_on_booking_order'):
+			trigger_type = frappe.get_cached_value('Payment Plan Type', plan.payment_plan_type, 'trigger_type')
+			if cint(frappe.get_cached_value('Property Trigger Type', trigger_type, 'is_booking_order_trigger')):
 				plan.start_date = self.transaction_date
+
+	def set_project_trigger_dates(self):
+		property_triggers = frappe.get_all('Property Trigger Table', {'parent': self.project}, ['trigger_date', 'trigger_type'])
+		for plan in self.payment_plan:
+			for trigger in property_triggers:
+				if plan.payment_plan_type == frappe.get_cached_value('Payment Plan Type', {'trigger_type': trigger.trigger_type}, 'plan_name'):
+					plan.start_date = getdate(trigger.trigger_date)
 
 	@frappe.whitelist()
 	def validate_payment_plan(self):
@@ -140,7 +148,7 @@ def get_payment_schedule(payment_plan):
 		if d.start_date:
 			payment_schedule.extend(get_payment_schedule_rows(d))
 
-	payment_schedule = sorted(payment_schedule, key=lambda d: d.due_date)
+	payment_schedule = sorted(payment_schedule, key=lambda d: getdate(d.due_date))
 
 	return payment_schedule
 
@@ -275,7 +283,9 @@ def get_all_due_installments(date):
 			.select(
 				pbo.name.as_("property_booking_order"), pps.name.as_("schedule_row_name")
 			)
-			.where(pps.is_installment == 1).where(pps.due_date <= date)
+			.where(pps.sales_invoice.isnull())
+			.where(pps.due_date <= date)
+			.where(pbo.docstatus == 1)
 			.orderby(pbo.name).orderby(pps.due_date)
 	).run(as_dict=True)
 
