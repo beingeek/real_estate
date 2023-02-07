@@ -29,7 +29,7 @@ app_license = "MIT"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Project": "public/js/controllers/project.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -94,9 +94,9 @@ app_license = "MIT"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-#	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Project": "real_estate.enhancements.project.PropertyProject"
+}
 
 # Document Events
 # ---------------
@@ -104,9 +104,9 @@ app_license = "MIT"
 
 doc_events = {
 	"Sales Invoice": {
-		"validate": "real_estate.real_estate.doctype.property_booking_order.property_booking_order.validate_sales_invoice",
-		"on_submit": "real_estate.real_estate.doctype.property_booking_order.property_booking_order.link_sales_invoice_in_payment_schedule",
-		"on_cancel": "real_estate.real_estate.doctype.property_booking_order.property_booking_order.unlink_sales_invoice_in_payment_schedule",
+		"validate": "real_estate.enhancements.sales_invoice.validate_sales_invoice",
+		"on_submit": "real_estate.enhancements.sales_invoice.link_sales_invoice_in_payment_schedule",
+		"on_cancel": "real_estate.enhancements.sales_invoice.unlink_sales_invoice_in_payment_schedule",
 	},
 }
 
@@ -118,7 +118,6 @@ scheduler_events = {
 	# 	"real_estate.tasks.all"
 	# ],
 	"daily": [
-		"erpnext.assets.doctype.asset.depreciation.post_depreciation_entries",
 		"real_estate.real_estate.doctype.property_booking_order.property_booking_order.process_scheduled_installments"
 	],
 	# "hourly": [
