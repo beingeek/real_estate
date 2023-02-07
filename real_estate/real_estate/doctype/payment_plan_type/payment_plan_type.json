@@ -10,9 +10,7 @@
  "field_order": [
   "plan_name",
   "transaction_item",
-  "trigger_on_booking_order",
-  "trigger_on_project_start",
-  "trigger_on_project_end",
+  "trigger_type",
   "column_break_3",
   "description"
  ],
@@ -47,30 +45,16 @@
    "no_copy": 1
   },
   {
-   "default": "0",
-   "fieldname": "trigger_on_project_start",
-   "fieldtype": "Check",
-   "label": "Trigger on Project Start",
-   "no_copy": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "trigger_on_project_end",
-   "fieldtype": "Check",
-   "label": "Trigger on Project End",
-   "no_copy": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "trigger_on_booking_order",
-   "fieldtype": "Check",
-   "label": "Trigger on Booking Order",
-   "no_copy": 1
+   "fieldname": "trigger_type",
+   "fieldtype": "Link",
+   "label": "Trigger Type",
+   "options": "Property Trigger Type",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-25 16:14:54.830387",
+ "modified": "2023-02-06 14:01:07.069190",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Payment Plan Type",
