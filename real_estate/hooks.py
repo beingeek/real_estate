@@ -185,3 +185,24 @@ scheduler_events = {
 # auth_hooks = [
 #	"real_estate.auth.validate"
 # ]
+
+fixtures = [
+	{
+		'doctype': 'Custom Field',
+		"filters": [
+			[
+				"name", "in",
+				[
+					"Sales Invoice-property_details", "Sales Invoice-property_unit", "Sales Invoice-cb_property_details_1",
+					"Sales Invoice-property_booking_order", "Sales Invoice-payment_schedule_row",
+					# "Customer-guardian_type", "Customer-guardian_name",
+					"Item-vehicle_allocation_required_from_delivery_period", "Item-payment_plan_type", "Item-is_property_transaction_item"
+				]
+			]
+		]
+	},
+	{
+		'dt': 'DocType Link',
+		"filters": [["parent", "=", "Project"], ["parenttype", "=", "Customize Form"], ["custom", "=", "1"]]
+	}
+]
