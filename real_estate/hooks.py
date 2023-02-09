@@ -6,6 +6,50 @@ app_publisher = "ParaLogic"
 app_description = "App for Real Estate Automation"
 app_email = "info@paralogic.io"
 app_license = "GNU General Public License (v3)"
+required_apps = ["erpnext"]
+
+doctype_js = {"Project": "public/js/controllers/project.js"}
+
+override_doctype_class = {
+	"Project": "real_estate.enhancements.project.PropertyProject"
+}
+
+doc_events = {
+	"Sales Invoice": {
+		"validate": "real_estate.enhancements.sales_invoice.validate_sales_invoice",
+		"on_submit": "real_estate.enhancements.sales_invoice.link_sales_invoice_in_payment_schedule",
+		"on_cancel": "real_estate.enhancements.sales_invoice.unlink_sales_invoice_in_payment_schedule",
+	},
+}
+
+scheduler_events = {
+	"daily": [
+		"real_estate.real_estate.doctype.property_booking_order.property_booking_order.process_scheduled_installments"
+	],
+}
+
+fixtures = [
+	{
+		'doctype': 'Custom Field',
+		"filters": [
+			[
+				"name", "in",
+				[
+					"Sales Invoice-property_details", "Sales Invoice-property_unit", "Sales Invoice-cb_property_details_1",
+					"Sales Invoice-property_booking_order", "Sales Invoice-payment_schedule_row",
+					# "Customer-guardian_type", "Customer-guardian_name",
+					"Item-vehicle_allocation_required_from_delivery_period", "Item-payment_plan_type", "Item-is_property_transaction_item",
+					"Project-property_details", "Project-is_real_estate_project", "Project-property_triggers"
+				]
+			]
+		]
+	},
+	{
+		'dt': 'DocType Link',
+		"filters": [["parent", "=", "Project"], ["parenttype", "=", "Customize Form"], ["custom", "=", "1"]]
+	}
+]
+
 
 # Includes in <head>
 # ------------------
@@ -29,7 +73,6 @@ app_license = "GNU General Public License (v3)"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-doctype_js = {"Project": "public/js/controllers/project.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -94,42 +137,12 @@ doctype_js = {"Project": "public/js/controllers/project.js"}
 # ---------------
 # Override standard doctype classes
 
-override_doctype_class = {
-	"Project": "real_estate.enhancements.project.PropertyProject"
-}
-
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-doc_events = {
-	"Sales Invoice": {
-		"validate": "real_estate.enhancements.sales_invoice.validate_sales_invoice",
-		"on_submit": "real_estate.enhancements.sales_invoice.link_sales_invoice_in_payment_schedule",
-		"on_cancel": "real_estate.enhancements.sales_invoice.unlink_sales_invoice_in_payment_schedule",
-	},
-}
-
 # Scheduled Tasks
 # ---------------
-
-scheduler_events = {
-	# "all": [
-	# 	"real_estate.tasks.all"
-	# ],
-	"daily": [
-		"real_estate.real_estate.doctype.property_booking_order.property_booking_order.process_scheduled_installments"
-	],
-	# "hourly": [
-	# 	"real_estate.tasks.hourly"
-	# ],
-	# "weekly": [
-	# 	"real_estate.tasks.weekly"
-	# ],
-	# "monthly": [
-	# 	"real_estate.tasks.monthly"
-	# ],
-}
 
 # Testing
 # -------
@@ -185,24 +198,3 @@ scheduler_events = {
 # auth_hooks = [
 #	"real_estate.auth.validate"
 # ]
-
-fixtures = [
-	{
-		'doctype': 'Custom Field',
-		"filters": [
-			[
-				"name", "in",
-				[
-					"Sales Invoice-property_details", "Sales Invoice-property_unit", "Sales Invoice-cb_property_details_1",
-					"Sales Invoice-property_booking_order", "Sales Invoice-payment_schedule_row",
-					# "Customer-guardian_type", "Customer-guardian_name",
-					"Item-vehicle_allocation_required_from_delivery_period", "Item-payment_plan_type", "Item-is_property_transaction_item"
-				]
-			]
-		]
-	},
-	{
-		'dt': 'DocType Link',
-		"filters": [["parent", "=", "Project"], ["parenttype", "=", "Customize Form"], ["custom", "=", "1"]]
-	}
-]
