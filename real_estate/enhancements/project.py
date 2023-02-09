@@ -53,12 +53,18 @@ def set_payment_plan_dates_update_schedule(project, property_trigger, trigger_da
 	for d in payment_plan_rows:
 		frappe.db.set_value('Property Payment Plan', d.payment_plan_row_name, 'start_date', trigger_date)
 		payment_plan_row = frappe.get_cached_doc('Property Payment Plan', d.payment_plan_row_name)
-		payment_schedule = get_payment_schedule_rows(payment_plan_row)
+		payment_schedule_rows = get_payment_schedule_rows(payment_plan_row)
 
 		pbo = frappe.get_doc('Property Booking Order', d.pbo_name)
-		for payment_schd in payment_schedule:
+		for payment_schd in payment_schedule_rows:
 			new_row = pbo.append('payment_schedule', payment_schd)
 			new_row.db_insert()
 
 			if getdate(new_row.due_date) <= getdate(today()):
 				create_sales_invoice(new_row.parent, new_row.name)
+
+		if pbo.payment_schedule:
+			pbo.payment_schedule = sorted(pbo.payment_schedule, key=lambda d: getdate(d.due_date))
+			for i, d in enumerate(pbo.payment_schedule):
+				d.idx = i + 1
+			pbo.update_child_table("payment_schedule")
