@@ -42,7 +42,7 @@ class PropertyTriggerType(Document):
 			frappe.qb.from_(pbo)
 				.inner_join(ppp).on(pbo.name == ppp.parent).inner_join(ppt).on(ppt.name == ppp.payment_plan_type)
 				.inner_join(ptt).on(ptt.name == ppt.trigger_type).select(pbo.name)
-				.where(ptt.name == 'Booking Order Trigger').distinct().orderby(pbo.name)
+				.where(ptt.name == self.name).distinct().orderby(pbo.name)
 		).run(as_dict=True)
 
 		if pbos:
