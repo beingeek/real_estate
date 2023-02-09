@@ -5,7 +5,7 @@ app_title = "Real Estate"
 app_publisher = "ParaLogic"
 app_description = "App for Real Estate Automation"
 app_email = "info@paralogic.io"
-app_license = "MIT"
+app_license = "GNU General Public License (v3)"
 
 # Includes in <head>
 # ------------------

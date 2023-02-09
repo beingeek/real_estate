@@ -4,4 +4,4 @@ Frappe App for Real Estate Automation (ERPNext Enhancement)
 
 #### License
 
-MIT
+GNU General Public License (v3)
