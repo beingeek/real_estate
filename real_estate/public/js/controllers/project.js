@@ -16,18 +16,22 @@ real_estate.ProjectControllerExtended = class ProjectController extends erpnext.
 
 		if (!me.frm.is_new() && me.frm.doc.is_real_estate_project) {
 			if (me.frm.doc.__onload && me.frm.doc.__onload.valid_project_triggers) {
-				$.each(me.frm.doc.__onload.valid_project_triggers || [], function (i, project_trigger) {
-					me.frm.add_custom_button(__(project_trigger), () => {
-						me.create_trigger(me.frm, project_trigger);
-					}, __('Create Trigger'));
+				var existing_project_triggers = me.frm.doc.property_triggers.map((p) => p.trigger_type);
+				var project_triggers = me.frm.doc.__onload.valid_project_triggers;
+				var triggers = project_triggers.filter(x => !existing_project_triggers.includes(x));
+
+				$.each(triggers || [], function (i, property_trigger) {
+						me.frm.add_custom_button(__(property_trigger), () => {
+							me.create_trigger_row(me.frm, property_trigger);
+						}, __('Trigger'));
 				});
 			}
 		}
 	}
 
-	create_trigger(frm, project_trigger) {
+	create_trigger_row(frm, project_trigger) {
 		var dialog = new frappe.ui.Dialog({
-			title: __("Triggering Invoice"),
+			title: __("Create Trigger Row"),
 			fields: [
 				{
 					fieldname: "trigger_type", fieldtype: "Link", options: "Property Trigger Type",
@@ -41,11 +45,10 @@ real_estate.ProjectControllerExtended = class ProjectController extends erpnext.
 					label: "Date", default: '', reqd: 1,
 				},
 			],
-			primary_action_label: 'Create Trigger',
 			primary_action(values) {
 
 				frappe.call({
-					method: "real_estate.enhancements.project.create_trigger",
+					method: "real_estate.enhancements.project.create_trigger_row",
 					args: {
 						project: frm.doc.name,
 						project_trigger: values.trigger_type,
