@@ -35,14 +35,14 @@ class PropertyBookingOrder(Document):
 
 	def on_submit(self):
 		self.update_property_unit()
-		self.trigger_invoices_on_submit()
+		self.create_invoices_on_submit()
 
 	def on_cancel(self):
 		self.update_property_unit()
 
-	def trigger_invoices_on_submit(self):
+	def create_invoices_on_submit(self):
 		for payment in self.payment_schedule:
-			if getdate(payment.due_date) < getdate(today()):
+			if getdate(payment.due_date) <= getdate(today()):
 				create_sales_invoice(self.name, payment.name)
 
 	def validate_property_unit_already_booked(self):
@@ -144,37 +144,36 @@ def get_payment_schedule(payment_plan):
 
 	payment_schedule = []
 
-	for d in payment_plan:
-		if d.start_date:
-			payment_schedule.extend(get_payment_schedule_rows(d))
+	for payment_plan_row in payment_plan:
+		if payment_plan_row.start_date:
+			payment_schedule.extend(get_payment_schedule_rows(payment_plan_row))
 
 	payment_schedule = sorted(payment_schedule, key=lambda d: getdate(d.due_date))
 
 	return payment_schedule
 
 
-def get_payment_schedule_rows(payment_plan):
+def get_payment_schedule_rows(payment_plan_row):
 	payment_schedule = []
 	payment_schedule_dict = frappe._dict({
-		"payment_plan_row": payment_plan.name,
-		"payment_plan_type": payment_plan.payment_plan_type,
+		"payment_plan_row": payment_plan_row.name,
+		"payment_plan_type": payment_plan_row.payment_plan_type,
 	})
-	if payment_plan.is_installment and payment_plan.no_of_installment > 1:
-		payment_plan.installment_start_date = payment_plan.start_date
-		for installment in range(1, payment_plan.no_of_installment + 1):
+	if payment_plan_row.is_installment and payment_plan_row.no_of_installment > 1:
+		payment_plan_row.installment_start_date = payment_plan_row.start_date
+		for installment in range(1, payment_plan_row.no_of_installment + 1):
 			plan = payment_schedule_dict.copy()
 			plan.is_installment = 1
-			plan.due_date = get_installment_date(payment_plan, installment)
-			plan.description = '{0} {1}'.format(payment_plan.payment_plan_type, installment)
-			plan.invoice_amount = flt(payment_plan.invoice_amount) / flt(payment_plan.no_of_installment)
-
+			plan.due_date = get_installment_date(payment_plan_row, installment)
+			plan.description = '{0} {1}'.format(payment_plan_row.payment_plan_type, installment)
+			plan.invoice_amount = flt(payment_plan_row.invoice_amount) / flt(payment_plan_row.no_of_installment)
 			payment_schedule.append(plan)
 
 	else:
 		plan = payment_schedule_dict.copy()
-		plan.due_date = payment_plan.start_date
-		plan.description = payment_plan.payment_plan_type
-		plan.invoice_amount = flt(payment_plan.invoice_amount)
+		plan.due_date = payment_plan_row.start_date
+		plan.description = payment_plan_row.payment_plan_type
+		plan.invoice_amount = flt(payment_plan_row.invoice_amount)
 		payment_schedule.append(plan)
 
 	return payment_schedule
