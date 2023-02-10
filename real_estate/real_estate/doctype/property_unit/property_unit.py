@@ -4,7 +4,6 @@
 import frappe
 from frappe import _
 from erpnext.controllers.status_updater import StatusUpdater
-from frappe.model.document import Document
 
 
 class PropertyUnit(StatusUpdater):
@@ -24,4 +23,4 @@ class PropertyUnit(StatusUpdater):
 			self.booking_status = 'Available'
 
 		if update:
-			self.db_set('booking_status', self.booking_status)
+			self.db_set('booking_status', self.booking_status, update_modified=update_modified)
