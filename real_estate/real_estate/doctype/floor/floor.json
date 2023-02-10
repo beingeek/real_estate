@@ -23,7 +23,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2022-12-29 16:45:45.919802",
+ "modified": "2023-02-10 18:44:05.124720",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Floor",
@@ -44,8 +44,8 @@
   }
  ],
  "quick_entry": 1,
- "sort_field": "modified",
- "sort_order": "DESC",
+ "sort_field": "name",
+ "sort_order": "ASC",
  "states": [],
  "track_changes": 1
 }
