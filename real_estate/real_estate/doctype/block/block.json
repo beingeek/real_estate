@@ -9,20 +9,11 @@
  "engine": "InnoDB",
  "field_order": [
   "naming_series",
-  "block",
-  "project",
-  "title"
+  "block_name",
+  "column_break_i4ulc",
+  "project"
  ],
  "fields": [
-  {
-   "fieldname": "block",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Block",
-   "no_copy": 1,
-   "reqd": 1,
-   "unique": 1
-  },
   {
    "fieldname": "project",
    "fieldtype": "Link",
@@ -40,11 +31,16 @@
    "set_only_once": 1
   },
   {
-   "fieldname": "title",
+   "fieldname": "column_break_i4ulc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "block_name",
    "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Title",
-   "no_copy": 1
+   "in_list_view": 1,
+   "label": "Block Name",
+   "no_copy": 1,
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -55,7 +51,7 @@
    "link_fieldname": "block"
   }
  ],
- "modified": "2023-01-02 14:03:21.302197",
+ "modified": "2023-02-10 18:48:26.060368",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Block",
@@ -76,8 +72,10 @@
   }
  ],
  "quick_entry": 1,
+ "search_fields": "project",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
+ "title_field": "block_name",
  "track_changes": 1
 }
