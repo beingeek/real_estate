@@ -4,7 +4,7 @@
  "allow_rename": 1,
  "autoname": "field:property_type_name",
  "creation": "2022-12-29 15:47:29.930665",
- "default_view": "List",
+ "default_view": "Tree",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
@@ -12,9 +12,9 @@
   "property_type_name",
   "lft",
   "rgt",
-  "is_group",
   "old_parent",
-  "parent_property_type"
+  "parent_property_type",
+  "is_group"
  ],
  "fields": [
   {
@@ -77,7 +77,7 @@
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2023-01-30 15:07:48.737300",
+ "modified": "2023-02-10 18:35:18.812905",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Type",
@@ -101,7 +101,7 @@
  ],
  "search_fields": "parent_property_type",
  "show_name_in_global_search": 1,
- "sort_field": "modified",
+ "sort_field": "idx",
  "sort_order": "DESC",
  "states": [],
  "track_changes": 1
