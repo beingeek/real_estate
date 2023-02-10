@@ -8,18 +8,11 @@ app_email = "info@paralogic.io"
 app_license = "GNU General Public License (v3)"
 required_apps = ["erpnext"]
 
-doctype_js = {"Project": "public/js/controllers/project.js"}
+doctype_js = {"Project": "overrides/project_hooks.js"}
 
 override_doctype_class = {
-	"Project": "real_estate.enhancements.project.PropertyProject"
-}
-
-doc_events = {
-	"Sales Invoice": {
-		"validate": "real_estate.enhancements.sales_invoice.validate_sales_invoice",
-		"on_submit": "real_estate.enhancements.sales_invoice.link_sales_invoice_in_payment_schedule",
-		"on_cancel": "real_estate.enhancements.sales_invoice.unlink_sales_invoice_in_payment_schedule",
-	},
+	"Project": "real_estate.overrides.project_hooks.PropertyProject",
+	"Sales Invoice": "real_estate.overrides.sales_invoice_hooks.PropertySalesInvoice",
 }
 
 scheduler_events = {

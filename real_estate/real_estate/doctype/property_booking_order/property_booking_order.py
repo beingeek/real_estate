@@ -248,7 +248,7 @@ def make_sales_invoice(property_booking_order, schedule_row_name):
 	if property_settings.tax_template:
 		invoice.taxes_and_charges = property_settings.tax_template
 
-	validate_duplicate_booking_payment_schedule(invoice)
+	invoice.validate_duplicate_booking_payment_schedule()
 
 	invoice.run_method("set_missing_values")
 	invoice.run_method("reset_taxes_and_charges")
@@ -287,20 +287,3 @@ def get_all_due_installments(date):
 			.where(pbo.docstatus == 1)
 			.orderby(pbo.name).orderby(pps.due_date)
 	).run(as_dict=True)
-
-
-def validate_duplicate_booking_payment_schedule(doc):
-	if not doc.get("property_booking_order") and doc.get("payment_schedule_row"):
-		return
-
-	filters = {
-		'property_booking_order': doc.property_booking_order,
-		'payment_schedule_row': doc.payment_schedule_row,
-		'docstatus': ["<", 2]
-	}
-	if not doc.is_new():
-		filters['name'] = ['not in', doc.name]
-
-	invoice_exist = frappe.db.get_all('Sales Invoice', filters=filters)
-	if invoice_exist:
-		frappe.throw(_('Invoice duplication against this Order'))

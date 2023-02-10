@@ -1,18 +1,15 @@
 frappe.provide("real_estate");
 frappe.provide('erpnext.projects');
 
-real_estate.ProjectControllerExtended = class ProjectController extends erpnext.projects.ProjectController {
-	onload() {
-		super.onload();
-	}
-
+real_estate.PropertyProjectController = class PropertyProjectController extends erpnext.projects.ProjectController {
 	refresh() {
+		super.refresh();
 		this.setup_buttons();
 	}
 
 	setup_buttons() {
-//		super.setup_buttons();
-		var me = this;
+		super.setup_buttons();
+		let me = this;
 
 		if (!me.frm.is_new() && me.frm.doc.is_real_estate_project) {
 			if (me.frm.doc.__onload && me.frm.doc.__onload.valid_project_triggers) {
@@ -30,7 +27,7 @@ real_estate.ProjectControllerExtended = class ProjectController extends erpnext.
 	}
 
 	create_trigger_row(frm, project_trigger) {
-		var dialog = new frappe.ui.Dialog({
+		let dialog = new frappe.ui.Dialog({
 			title: __("Create Trigger Row"),
 			fields: [
 				{
@@ -46,7 +43,6 @@ real_estate.ProjectControllerExtended = class ProjectController extends erpnext.
 				},
 			],
 			primary_action(values) {
-
 				frappe.call({
 					method: "real_estate.enhancements.project.create_trigger_row",
 					args: {
@@ -68,4 +64,4 @@ real_estate.ProjectControllerExtended = class ProjectController extends erpnext.
 	}
  };
 
-extend_cscript(cur_frm.cscript, new real_estate.ProjectControllerExtended({frm: cur_frm}));
+extend_cscript(cur_frm.cscript, new real_estate.PropertyProjectController({frm: cur_frm}));

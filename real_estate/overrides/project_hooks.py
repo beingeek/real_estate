@@ -8,6 +8,7 @@ from frappe.utils import getdate, today
 
 class PropertyProject(Project):
 	def onload(self):
+		super().onload()
 		self.set_onload('valid_project_triggers', get_valid_project_triggers())
 
 
