@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "autoname": "naming_series:",
  "creation": "2022-12-29 18:24:28.857066",
  "default_view": "List",
@@ -10,11 +9,8 @@
  "field_order": [
   "title",
   "naming_series",
-  "booking_details_section",
   "customer",
   "customer_name",
-  "contact_no",
-  "cnic",
   "column_break_15",
   "remarks",
   "column_break_3",
@@ -22,25 +18,33 @@
   "transaction_date",
   "expected_possession_date",
   "amended_from",
+  "customer_details_section",
+  "contact_no",
+  "column_break_6m3hy",
+  "cnic",
   "unit_details_section",
   "property_unit",
-  "project",
-  "type",
-  "column_break_9",
-  "floor",
   "unit_number",
+  "column_break_9",
+  "property_type",
+  "project",
   "column_break_11",
+  "block",
+  "block_name",
+  "column_break_g0h1m",
+  "floor",
+  "payment_plan_section",
   "total_price",
-  "customer_details_section",
-  "column_break_17",
-  "section_break_26",
+  "column_break_qpvqc",
   "payment_plan_template",
+  "section_break_rftju",
   "payment_plan",
+  "payment_schedule_tab",
   "payment_schedule",
-  "status_section",
-  "payment_status",
+  "status_tab",
+  "booking_status",
   "column_break_30",
-  "booking_status"
+  "payment_status"
  ],
  "fields": [
   {
@@ -53,6 +57,7 @@
   {
    "fieldname": "property_unit",
    "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Unit",
    "no_copy": 1,
    "options": "Property Unit",
@@ -76,22 +81,22 @@
    "set_only_once": 1
   },
   {
-   "collapsible": 1,
-   "fieldname": "status_section",
-   "fieldtype": "Section Break",
-   "label": "Status"
-  },
-  {
    "fieldname": "payment_status",
    "fieldtype": "Select",
+   "in_standard_filter": 1,
    "label": "Payment Status",
-   "options": "\nPaid\nUnpaid\nOverdue\nPartially Paid\nRefunded"
+   "no_copy": 1,
+   "options": "\nPaid\nUnpaid\nOverdue\nPartially Paid\nRefunded",
+   "read_only": 1
   },
   {
    "fieldname": "booking_status",
    "fieldtype": "Select",
+   "in_standard_filter": 1,
    "label": "Booking Status",
-   "options": "\nOnhold\nReturned\nTransferred"
+   "no_copy": 1,
+   "options": "\nOnhold\nReturned\nTransferred",
+   "read_only": 1
   },
   {
    "fieldname": "unit_details_section",
@@ -105,22 +110,17 @@
   },
   {
    "fieldname": "floor",
-   "fieldtype": "Data",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
    "label": "Floor",
    "no_copy": 1,
-   "read_only": 1
-  },
-  {
-   "fieldname": "type",
-   "fieldtype": "Link",
-   "label": "Type",
-   "no_copy": 1,
-   "options": "Property Type",
+   "options": "Floor",
    "read_only": 1
   },
   {
    "fieldname": "unit_number",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Unit Number",
    "no_copy": 1,
    "read_only": 1
@@ -129,7 +129,6 @@
    "fieldname": "total_price",
    "fieldtype": "Currency",
    "label": "Total Price",
-   "no_copy": 1,
    "reqd": 1
   },
   {
@@ -159,28 +158,19 @@
    "fieldtype": "Column Break"
   },
   {
-   "fieldname": "column_break_17",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "column_break_3",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "expected_possession_date",
    "fieldtype": "Date",
-   "label": "Expected Possession Date"
-  },
-  {
-   "fieldname": "booking_details_section",
-   "fieldtype": "Section Break",
-   "label": "Booking Details"
+   "label": "Expected Possession Date",
+   "no_copy": 1
   },
   {
    "fieldname": "payment_plan",
    "fieldtype": "Table",
    "label": "Payment Plan",
-   "no_copy": 1,
    "options": "Property Payment Plan"
   },
   {
@@ -202,7 +192,9 @@
    "fieldname": "transaction_date",
    "fieldtype": "Date",
    "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Booking Date",
+   "no_copy": 1,
    "reqd": 1
   },
   {
@@ -214,13 +206,10 @@
    "reqd": 1
   },
   {
-   "fieldname": "section_break_26",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "remarks",
    "fieldtype": "Small Text",
-   "label": "Remarks"
+   "label": "Remarks",
+   "no_copy": 1
   },
   {
    "fieldname": "title",
@@ -233,28 +222,88 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:doc.customer && doc.customer_name != doc.customer",
    "fetch_from": "customer.customer_name",
    "fetch_if_empty": 1,
    "fieldname": "customer_name",
    "fieldtype": "Data",
-   "label": "Customer Name"
+   "label": "Customer Name",
+   "read_only": 1
   },
   {
-   "fetch_from": "property_unit.project",
-   "fetch_if_empty": 1,
    "fieldname": "project",
    "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
    "label": "Project",
    "no_copy": 1,
    "options": "Project",
-   "read_only": 1,
-   "reqd": 1
+   "read_only": 1
+  },
+  {
+   "fieldname": "payment_plan_section",
+   "fieldtype": "Section Break",
+   "label": "Payment Plan"
+  },
+  {
+   "fieldname": "column_break_qpvqc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_rftju",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_6m3hy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "payment_schedule_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment Schedule"
+  },
+  {
+   "fieldname": "block",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Block",
+   "no_copy": 1,
+   "options": "Block",
+   "read_only": 1
+  },
+  {
+   "depends_on": "block",
+   "fetch_from": "block.block_name",
+   "fieldname": "block_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Block Name",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_g0h1m",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "status_tab",
+   "fieldtype": "Tab Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "property_type",
+   "fieldtype": "Link",
+   "in_standard_filter": 1,
+   "label": "Property Type",
+   "no_copy": 1,
+   "options": "Property Type",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-01-30 13:54:59.768775",
+ "modified": "2023-02-13 15:17:53.022980",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Booking Order",
@@ -274,8 +323,11 @@
    "write": 1
   }
  ],
+ "search_fields": "customer, customer_name, property_unit, unit_number, project, block_name",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "title"
+ "title_field": "title",
+ "track_changes": 1,
+ "track_seen": 1
 }
