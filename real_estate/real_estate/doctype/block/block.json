@@ -51,7 +51,7 @@
    "link_fieldname": "block"
   }
  ],
- "modified": "2023-02-10 18:48:26.060368",
+ "modified": "2023-02-13 14:08:17.118066",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Block",
@@ -72,7 +72,7 @@
   }
  ],
  "quick_entry": 1,
- "search_fields": "project",
+ "search_fields": "block_name, project",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],

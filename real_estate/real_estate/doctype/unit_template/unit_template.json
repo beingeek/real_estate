@@ -1,36 +1,35 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "naming_series:",
+ "autoname": "field:template_name",
  "creation": "2022-12-30 15:03:31.748657",
  "default_view": "List",
  "doctype": "DocType",
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "naming_series",
   "template_name",
-  "facing",
   "type",
-  "is_corner_field",
-  "is_road_side",
-  "column_break_4",
-  "payment_plan_template",
+  "column_break_syojy",
   "project",
-  "rooms",
-  "column_break_9",
-  "location",
+  "features_section",
+  "area_unit",
+  "area",
+  "column_break_4",
+  "bedrooms",
+  "bathrooms",
+  "column_break_qguvd",
+  "facing",
+  "is_corner",
+  "is_road_side",
+  "location_section",
+  "address",
+  "pricing_section",
   "price",
-  "land_area_unit",
-  "land_area"
+  "column_break_hzdtg",
+  "payment_plan_template"
  ],
  "fields": [
-  {
-   "fieldname": "location",
-   "fieldtype": "Link",
-   "label": "Location",
-   "options": "Address"
-  },
   {
    "fieldname": "facing",
    "fieldtype": "Select",
@@ -49,28 +48,6 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "Square Foot",
-   "fieldname": "land_area_unit",
-   "fieldtype": "Link",
-   "label": "Land Area Unit",
-   "options": "UOM",
-   "reqd": 1
-  },
-  {
-   "fieldname": "land_area",
-   "fieldtype": "Float",
-   "label": "Land Area",
-   "reqd": 1
-  },
-  {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Series",
-   "options": "UNIT-TEMP-",
-   "set_only_once": 1
-  },
-  {
    "fieldname": "template_name",
    "fieldtype": "Data",
    "in_list_view": 1,
@@ -79,26 +56,10 @@
    "unique": 1
   },
   {
-   "fieldname": "rooms",
-   "fieldtype": "Int",
-   "label": "No. of Rooms",
-   "reqd": 1
-  },
-  {
    "fieldname": "price",
    "fieldtype": "Currency",
    "label": "Price",
    "reqd": 1
-  },
-  {
-   "fieldname": "column_break_9",
-   "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fieldname": "is_corner_field",
-   "fieldtype": "Check",
-   "label": "Is Corner Field"
   },
   {
    "default": "0",
@@ -118,15 +79,79 @@
    "fieldtype": "Link",
    "label": "Payment Plan Template",
    "options": "Property Payment Plan Template"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_corner",
+   "fieldtype": "Check",
+   "label": "Is Corner"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Link",
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "area_unit",
+   "fieldtype": "Link",
+   "label": "Area Unit",
+   "options": "UOM",
+   "reqd": 1
+  },
+  {
+   "fieldname": "area",
+   "fieldtype": "Float",
+   "label": "Area",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bedrooms",
+   "fieldtype": "Int",
+   "label": "Bedrooms",
+   "reqd": 1
+  },
+  {
+   "fieldname": "bathrooms",
+   "fieldtype": "Int",
+   "label": "Bathrooms",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_syojy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Features"
+  },
+  {
+   "fieldname": "column_break_qguvd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "fieldname": "column_break_hzdtg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-01-25 16:53:16.571825",
+ "modified": "2023-02-13 14:18:11.508982",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Unit Template",
- "naming_rule": "By \"Naming Series\" field",
+ "naming_rule": "By fieldname",
  "owner": "Administrator",
  "permissions": [
   {
@@ -142,8 +167,9 @@
    "write": 1
   }
  ],
+ "search_fields": "type, project",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
- "title_field": "template_name"
+ "track_changes": 1
 }
