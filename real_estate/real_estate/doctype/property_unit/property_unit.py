@@ -8,11 +8,7 @@ from erpnext.controllers.status_updater import StatusUpdater
 
 class PropertyUnit(StatusUpdater):
 	def validate(self):
-		self.set_title()
 		self.set_status()
-
-	def set_title(self):
-		self.title = "-".join(filter(None, [self.unit_number, self.block]))
 
 	def set_status(self, update=False, status=None, update_modified=False):
 		bookings = frappe.get_all('Property Booking Order', {'property_unit': self.name, 'docstatus': 1})
