@@ -4,13 +4,13 @@
 import frappe
 from frappe import _
 from frappe.model.document import Document
-from frappe.utils import cint, cstr, getdate, flt, add_to_date, today
+from frappe.utils import cint, getdate, flt, add_to_date, today
 from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
 import json
-from six import string_types
+
 
 force_fields = [
-	'floor', 'type', 'total_price', 'unit_number'
+	'unit_number', 'property_type', 'project', 'block', 'block_name', 'floor',
 ]
 
 dont_update_if_missing = [
@@ -29,6 +29,7 @@ class PropertyBookingOrder(Document):
 		self.validate_payment_plan()
 		self.set_payment_schedule()
 		self.validate_payment_schedule()
+		self.set_title()
 
 	def set_missing_values(self, for_validate=False):
 		self.set_property_unit_details()
@@ -39,6 +40,9 @@ class PropertyBookingOrder(Document):
 
 	def on_cancel(self):
 		self.update_property_unit()
+
+	def set_title(self):
+		self.title = self.customer_name or self.customer
 
 	def create_invoices_on_submit(self):
 		for payment in self.payment_schedule:
@@ -139,7 +143,7 @@ def get_payment_schedule(payment_plan):
 	if not payment_plan:
 		return
 
-	if isinstance(payment_plan, string_types):
+	if isinstance(payment_plan, str):
 		payment_plan = json.loads(payment_plan)
 
 	payment_schedule = []
@@ -159,14 +163,14 @@ def get_payment_schedule_rows(payment_plan_row):
 		"payment_plan_row": payment_plan_row.name,
 		"payment_plan_type": payment_plan_row.payment_plan_type,
 	})
-	if payment_plan_row.is_installment and payment_plan_row.no_of_installment > 1:
+	if payment_plan_row.is_installment and payment_plan_row.no_of_installments > 1:
 		payment_plan_row.installment_start_date = payment_plan_row.start_date
-		for installment in range(1, payment_plan_row.no_of_installment + 1):
+		for installment in range(1, payment_plan_row.no_of_installments + 1):
 			plan = payment_schedule_dict.copy()
 			plan.is_installment = 1
 			plan.due_date = get_installment_date(payment_plan_row, installment)
 			plan.description = '{0} {1}'.format(payment_plan_row.payment_plan_type, installment)
-			plan.invoice_amount = flt(payment_plan_row.invoice_amount) / flt(payment_plan_row.no_of_installment)
+			plan.invoice_amount = flt(payment_plan_row.invoice_amount) / flt(payment_plan_row.no_of_installments)
 			payment_schedule.append(plan)
 
 	else:
@@ -208,13 +212,16 @@ def get_property_unit_details(property_unit):
 	if not property_unit:
 		return
 
-	property_unit = frappe.get_cached_doc('Property Unit', property_unit)
+	property_unit = frappe.get_doc('Property Unit', property_unit)
 
 	out = frappe._dict({
-		'type': property_unit.type,
+		'unit_number': property_unit.unit_number,
+		'property_type': property_unit.property_type,
+		'block': property_unit.block,
+		'block_name': property_unit.block_name,
 		'floor': property_unit.floor,
+		'project': property_unit.project,
 		'total_price': property_unit.price,
-		'unit_number': property_unit.unit_number
 	})
 
 	return out
