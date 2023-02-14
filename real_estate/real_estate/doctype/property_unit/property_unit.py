@@ -9,6 +9,12 @@ from erpnext.controllers.status_updater import StatusUpdater
 class PropertyUnit(StatusUpdater):
 	def validate(self):
 		self.set_status()
+		self.validate_block_project()
+
+	def validate_block_project(self):
+		block_project = frappe.get_cached_value('Block' ,self.block, 'project')
+		if self.project and self.project != block_project:
+			frappe.throw(_('Block is not linked with this Project'))
 
 	def set_status(self, update=False, status=None, update_modified=False):
 		bookings = frappe.get_all('Property Booking Order', {'property_unit': self.name, 'docstatus': 1})
