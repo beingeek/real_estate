@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
+ "content": "[{\"id\":\"DG0Ian-p1V\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"id\":\"s9eapXLtB3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Unit Booked\",\"col\":3}},{\"id\":\"BIXGlnQ6UM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Units Available\",\"col\":3}},{\"id\":\"VrjmhCtFlc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Booking Order\",\"col\":3}},{\"id\":\"XzrhJIheYy\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tgr8Y5r5xm\",\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"id\":\"N6faepQyVL\",\"type\":\"card\",\"data\":{\"card_name\":\"Templates\",\"col\":3}},{\"id\":\"tg5jjEw4tb\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
  "creation": "2022-12-30 17:47:24.454862",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -42,8 +42,36 @@
   {
    "hidden": 0,
    "is_query_report": 0,
+   "label": "Templates",
+   "link_count": 2,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Unit Template",
+   "link_count": 0,
+   "link_to": "Unit Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Property Payment Plan Template",
+   "link_count": 0,
+   "link_to": "Property Payment Plan Template",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
    "label": "Settings",
-   "link_count": 4,
+   "link_count": 6,
    "onboard": 0,
    "type": "Card Break"
   },
@@ -80,15 +108,35 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Unit Template",
+   "label": "Property Settings",
    "link_count": 0,
-   "link_to": "Unit Template",
+   "link_to": "Property Settings",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Payment Plan Type",
+   "link_count": 0,
+   "link_to": "Payment Plan Type",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Property Trigger Type",
+   "link_count": 0,
+   "link_to": "Property Trigger Type",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
   }
  ],
- "modified": "2023-01-31 14:22:43.953285",
+ "modified": "2023-02-13 14:13:45.462398",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate",
@@ -98,6 +146,34 @@
  "quick_lists": [],
  "roles": [],
  "sequence_id": 21.0,
- "shortcuts": [],
+ "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Available",
+   "label": "Property Units Available",
+   "link_to": "Property Unit",
+   "stats_filter": "{\"booking_status\":[\"=\",\"Available\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Blue",
+   "doc_view": "List",
+   "format": "{} Booked",
+   "label": "Property Unit Booked",
+   "link_to": "Property Unit",
+   "stats_filter": "{\"booking_status\":[\"=\",\"Booked\"]}",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "format": "{} Paid",
+   "label": "Property Booking Order",
+   "link_to": "Property Booking Order",
+   "stats_filter": "{\"outstanting_amount\":[\"=\",0],\"docstatus\":[\"=\",\"1\"]}",
+   "type": "DocType"
+  }
+ ],
  "title": "Real Estate"
 }
