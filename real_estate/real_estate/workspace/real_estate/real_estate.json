@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"DG0Ian-p1V\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"id\":\"s9eapXLtB3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Unit Booked\",\"col\":3}},{\"id\":\"BIXGlnQ6UM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Units Available\",\"col\":3}},{\"id\":\"VrjmhCtFlc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Booking Order\",\"col\":3}},{\"id\":\"XzrhJIheYy\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tgr8Y5r5xm\",\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"id\":\"N6faepQyVL\",\"type\":\"card\",\"data\":{\"card_name\":\"Templates\",\"col\":3}},{\"id\":\"tg5jjEw4tb\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
+ "content": "[{\"id\":\"DG0Ian-p1V\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"id\":\"s9eapXLtB3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Unit Booked\",\"col\":3}},{\"id\":\"BIXGlnQ6UM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Units Available\",\"col\":3}},{\"id\":\"VrjmhCtFlc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Booking Order\",\"col\":3}},{\"id\":\"0T-WQ9yrxB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"XzrhJIheYy\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tgr8Y5r5xm\",\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"id\":\"N6faepQyVL\",\"type\":\"card\",\"data\":{\"card_name\":\"Templates\",\"col\":3}},{\"id\":\"tg5jjEw4tb\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
  "creation": "2022-12-30 17:47:24.454862",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -11,34 +11,6 @@
  "is_hidden": 0,
  "label": "Real Estate",
  "links": [
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Property Booking",
-   "link_count": 2,
-   "onboard": 0,
-   "type": "Card Break"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Property Unit",
-   "link_count": 0,
-   "link_to": "Property Unit",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
-  {
-   "hidden": 0,
-   "is_query_report": 0,
-   "label": "Property Booking Order",
-   "link_count": 0,
-   "link_to": "Property Booking Order",
-   "link_type": "DocType",
-   "onboard": 0,
-   "type": "Link"
-  },
   {
    "hidden": 0,
    "is_query_report": 0,
@@ -108,9 +80,9 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Property Settings",
+   "label": "Real Estate Settings",
    "link_count": 0,
-   "link_to": "Property Settings",
+   "link_to": "Real Estate Settings",
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
@@ -134,9 +106,47 @@
    "link_type": "DocType",
    "onboard": 0,
    "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Property Booking",
+   "link_count": 3,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Property Unit",
+   "link_count": 0,
+   "link_to": "Property Unit",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Property Booking Order",
+   "link_count": 0,
+   "link_to": "Property Booking Order",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Project",
+   "link_count": 0,
+   "link_to": "Project",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
   }
  ],
- "modified": "2023-02-13 14:13:45.462398",
+ "modified": "2023-02-14 15:31:26.236529",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate",
@@ -157,6 +167,14 @@
    "type": "DocType"
   },
   {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Project",
+   "link_to": "Project",
+   "stats_filter": "",
+   "type": "DocType"
+  },
+  {
    "color": "Blue",
    "doc_view": "List",
    "format": "{} Booked",
@@ -171,7 +189,7 @@
    "format": "{} Paid",
    "label": "Property Booking Order",
    "link_to": "Property Booking Order",
-   "stats_filter": "{\"outstanting_amount\":[\"=\",0],\"docstatus\":[\"=\",\"1\"]}",
+   "stats_filter": "{\"outstanding_amount\":[\"=\",0],\"docstatus\":[\"=\",\"1\"]}",
    "type": "DocType"
   }
  ],
