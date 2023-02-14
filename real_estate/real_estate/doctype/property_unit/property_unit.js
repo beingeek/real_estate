@@ -41,6 +41,10 @@ real_estate.PropertyUnit = class PropertyUnit extends frappe.ui.form.Controller 
 			cur_frm.set_value("property_unit", this.frm.doc.name);
 		});
 	}
+
+	address() {
+		erpnext.utils.get_address_display(this.frm, 'address', 'address_display');
+	}
 }
 
 extend_cscript(cur_frm.cscript, new real_estate.PropertyUnit({frm: cur_frm}));
