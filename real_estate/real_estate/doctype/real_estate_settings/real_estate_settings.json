@@ -1,6 +1,5 @@
 {
  "actions": [],
- "allow_rename": 1,
  "creation": "2023-01-26 17:11:29.735368",
  "default_view": "List",
  "doctype": "DocType",
@@ -11,20 +10,15 @@
   "tax_template",
   "column_break_3",
   "section_break_4",
-  "property_uom",
+  "property_transaction_uom",
   "uom",
-  "item_group"
+  "item_group",
+  "default_area_unit"
  ],
  "fields": [
   {
    "fieldname": "column_break_3",
    "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "property_uom",
-   "fieldtype": "Link",
-   "label": "Property UOM",
-   "options": "UOM"
   },
   {
    "fieldname": "uom",
@@ -51,15 +45,27 @@
    "fieldname": "section_break_4",
    "fieldtype": "Section Break",
    "label": "Transaction Item Configuration"
+  },
+  {
+   "fieldname": "property_transaction_uom",
+   "fieldtype": "Link",
+   "label": "Property Transaction UOM",
+   "options": "UOM"
+  },
+  {
+   "fieldname": "default_area_unit",
+   "fieldtype": "Link",
+   "label": "Default Area Unit",
+   "options": "UOM"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-01-26 17:28:56.306281",
+ "modified": "2023-02-14 18:57:53.019732",
  "modified_by": "Administrator",
  "module": "Real Estate",
- "name": "Property Settings",
+ "name": "Real Estate Settings",
  "owner": "Administrator",
  "permissions": [
   {

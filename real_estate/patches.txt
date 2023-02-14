@@ -1,4 +1,5 @@
 [pre_model_sync]
 real_estate.patches.refactor_unit_fieldnames
+execute:frappe.rename_doc("DocType", "Property Settings", "Real Estate Settings", force=True)
 
 [post_model_sync]
