@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"DG0Ian-p1V\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"id\":\"s9eapXLtB3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Unit Booked\",\"col\":3}},{\"id\":\"BIXGlnQ6UM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Units Available\",\"col\":3}},{\"id\":\"VrjmhCtFlc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Booking Order\",\"col\":3}},{\"id\":\"0T-WQ9yrxB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"XzrhJIheYy\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tgr8Y5r5xm\",\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"id\":\"N6faepQyVL\",\"type\":\"card\",\"data\":{\"card_name\":\"Templates\",\"col\":3}},{\"id\":\"tg5jjEw4tb\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
+ "content": "[{\"id\":\"DG0Ian-p1V\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"id\":\"BIXGlnQ6UM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Units Available\",\"col\":4}},{\"id\":\"0T-WQ9yrxB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":4}},{\"id\":\"CJyHHuBd2d\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Booking Order\",\"col\":4}},{\"id\":\"XzrhJIheYy\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tgr8Y5r5xm\",\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"id\":\"N6faepQyVL\",\"type\":\"card\",\"data\":{\"card_name\":\"Templates\",\"col\":3}},{\"id\":\"tg5jjEw4tb\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
  "creation": "2022-12-30 17:47:24.454862",
  "docstatus": 0,
  "doctype": "Workspace",
@@ -80,7 +80,7 @@
   {
    "hidden": 0,
    "is_query_report": 0,
-   "label": "Real Estate Settings",
+   "label": "Property Settings",
    "link_count": 0,
    "link_to": "Real Estate Settings",
    "link_type": "DocType",
@@ -146,7 +146,7 @@
    "type": "Link"
   }
  ],
- "modified": "2023-02-14 15:31:26.236529",
+ "modified": "2023-02-14 23:43:23.092314",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate",
@@ -157,6 +157,14 @@
  "roles": [],
  "sequence_id": 21.0,
  "shortcuts": [
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Property Booking Order",
+   "link_to": "Property Booking Order",
+   "stats_filter": "",
+   "type": "DocType"
+  },
   {
    "color": "Grey",
    "doc_view": "List",
@@ -172,24 +180,6 @@
    "label": "Project",
    "link_to": "Project",
    "stats_filter": "",
-   "type": "DocType"
-  },
-  {
-   "color": "Blue",
-   "doc_view": "List",
-   "format": "{} Booked",
-   "label": "Property Unit Booked",
-   "link_to": "Property Unit",
-   "stats_filter": "{\"booking_status\":[\"=\",\"Booked\"]}",
-   "type": "DocType"
-  },
-  {
-   "color": "Grey",
-   "doc_view": "List",
-   "format": "{} Paid",
-   "label": "Property Booking Order",
-   "link_to": "Property Booking Order",
-   "stats_filter": "{\"outstanding_amount\":[\"=\",0],\"docstatus\":[\"=\",\"1\"]}",
    "type": "DocType"
   }
  ],

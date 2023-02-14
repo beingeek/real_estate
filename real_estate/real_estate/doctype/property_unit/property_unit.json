@@ -43,38 +43,12 @@
  ],
  "fields": [
   {
-   "fetch_from": "unit_template.facing",
-   "fetch_if_empty": 1,
-   "fieldname": "facing",
+   "fieldname": "naming_series",
    "fieldtype": "Select",
-   "label": "Facing",
-   "no_copy": 1,
-   "options": "\nNorth\nEast\nWest\nSouth"
-  },
-  {
-   "fieldname": "column_break_4",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "block",
-   "fieldtype": "Link",
-   "in_standard_filter": 1,
-   "label": "Block",
-   "options": "Block",
-   "reqd": 1
-  },
-  {
-   "fieldname": "floor",
-   "fieldtype": "Link",
-   "in_list_view": 1,
-   "in_standard_filter": 1,
-   "label": "Floor",
-   "options": "Floor",
-   "reqd": 1
-  },
-  {
-   "fieldname": "column_break_11",
-   "fieldtype": "Column Break"
+   "hidden": 1,
+   "label": "Series",
+   "options": "UNIT-",
+   "set_only_once": 1
   },
   {
    "fieldname": "unit_number",
@@ -86,74 +60,24 @@
    "set_only_once": 1
   },
   {
-   "fieldname": "naming_series",
-   "fieldtype": "Select",
-   "hidden": 1,
-   "label": "Series",
-   "options": "UNIT-",
-   "set_only_once": 1
-  },
-  {
    "fieldname": "unit_template",
    "fieldtype": "Link",
    "label": "Unit Template",
    "options": "Unit Template"
   },
   {
-   "fetch_from": "unit_template.price",
+   "fetch_from": "unit_template.property_type",
    "fetch_if_empty": 1,
-   "fieldname": "price",
-   "fieldtype": "Currency",
-   "label": "Price",
-   "non_negative": 1,
-   "reqd": 1
-  },
-  {
-   "fieldname": "booking_status",
-   "fieldtype": "Select",
-   "label": "Booking Status",
-   "options": "\nBooked\nAvailable",
-   "read_only": 1
-  },
-  {
-   "collapsible": 1,
-   "fieldname": "status_section",
-   "fieldtype": "Section Break",
-   "label": "Status"
-  },
-  {
-   "fetch_from": "unit_template.payment_plan_template",
-   "fetch_if_empty": 1,
-   "fieldname": "payment_plan_template",
+   "fieldname": "property_type",
    "fieldtype": "Link",
-   "label": "Payment Plan Template",
-   "options": "Property Payment Plan Template"
-  },
-  {
-   "fieldname": "features_section",
-   "fieldtype": "Section Break",
-   "label": "Features"
-  },
-  {
-   "fieldname": "company",
-   "fieldtype": "Link",
-   "label": "Company",
-   "options": "Company",
-   "remember_last_selected_value": 1,
+   "in_list_view": 1,
+   "label": "Property Type",
+   "options": "Property Type",
    "reqd": 1
   },
   {
    "fieldname": "column_break_5",
    "fieldtype": "Column Break"
-  },
-  {
-   "default": "0",
-   "fetch_from": "unit_template.is_road_side",
-   "fetch_if_empty": 1,
-   "fieldname": "is_road_side",
-   "fieldtype": "Check",
-   "label": "Is Road Side",
-   "no_copy": 1
   },
   {
    "fetch_from": "unit_template.project",
@@ -166,39 +90,47 @@
    "options": "Project"
   },
   {
-   "fieldname": "column_break_20",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "pricing_section",
-   "fieldtype": "Section Break",
-   "label": "Pricing"
-  },
-  {
-   "default": "0",
-   "fetch_from": "unit_template.is_corner",
-   "fetch_if_empty": 1,
-   "fieldname": "is_corner",
-   "fieldtype": "Check",
-   "label": "Is Corner",
-   "no_copy": 1
-  },
-  {
-   "fieldname": "column_break_vjpnz",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "location_section",
-   "fieldtype": "Section Break",
-   "label": "Location"
-  },
-  {
-   "fetch_from": "unit_template.address",
-   "fetch_if_empty": 1,
-   "fieldname": "address",
+   "fieldname": "block",
    "fieldtype": "Link",
-   "label": "Address",
-   "options": "Address"
+   "in_standard_filter": 1,
+   "label": "Block",
+   "options": "Block",
+   "reqd": 1
+  },
+  {
+   "depends_on": "block",
+   "fetch_from": "block.block_name",
+   "fieldname": "block_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Block Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_11",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "floor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Floor",
+   "options": "Floor",
+   "reqd": 1
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company",
+   "remember_last_selected_value": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "features_section",
+   "fieldtype": "Section Break",
+   "label": "Features"
   },
   {
    "fetch_from": "unit_template.area_unit",
@@ -220,6 +152,10 @@
    "reqd": 1
   },
   {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
    "fetch_from": "unit_template.bedrooms",
    "fetch_if_empty": 1,
    "fieldname": "bedrooms",
@@ -238,23 +174,52 @@
    "reqd": 1
   },
   {
-   "depends_on": "block",
-   "fetch_from": "block.block_name",
-   "fieldname": "block_name",
-   "fieldtype": "Data",
-   "in_list_view": 1,
-   "label": "Block Name",
-   "read_only": 1
+   "fieldname": "column_break_20",
+   "fieldtype": "Column Break"
   },
   {
-   "fetch_from": "unit_template.property_type",
+   "fetch_from": "unit_template.facing",
    "fetch_if_empty": 1,
-   "fieldname": "property_type",
+   "fieldname": "facing",
+   "fieldtype": "Select",
+   "label": "Facing",
+   "no_copy": 1,
+   "options": "\nNorth\nEast\nWest\nSouth"
+  },
+  {
+   "default": "0",
+   "fetch_from": "unit_template.is_corner",
+   "fetch_if_empty": 1,
+   "fieldname": "is_corner",
+   "fieldtype": "Check",
+   "label": "Is Corner",
+   "no_copy": 1
+  },
+  {
+   "default": "0",
+   "fetch_from": "unit_template.is_road_side",
+   "fetch_if_empty": 1,
+   "fieldname": "is_road_side",
+   "fieldtype": "Check",
+   "label": "Is Road Side",
+   "no_copy": 1
+  },
+  {
+   "fieldname": "location_section",
+   "fieldtype": "Section Break",
+   "label": "Location"
+  },
+  {
+   "fetch_from": "unit_template.address",
+   "fetch_if_empty": 1,
+   "fieldname": "address",
    "fieldtype": "Link",
-   "in_list_view": 1,
-   "label": "Property Type",
-   "options": "Property Type",
-   "reqd": 1
+   "label": "Address",
+   "options": "Address"
+  },
+  {
+   "fieldname": "column_break_jnehk",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "address_display",
@@ -263,8 +228,43 @@
    "read_only": 1
   },
   {
-   "fieldname": "column_break_jnehk",
+   "fieldname": "pricing_section",
+   "fieldtype": "Section Break",
+   "label": "Pricing"
+  },
+  {
+   "fetch_from": "unit_template.price",
+   "fetch_if_empty": 1,
+   "fieldname": "price",
+   "fieldtype": "Currency",
+   "label": "Price",
+   "non_negative": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vjpnz",
    "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "unit_template.payment_plan_template",
+   "fetch_if_empty": 1,
+   "fieldname": "payment_plan_template",
+   "fieldtype": "Link",
+   "label": "Payment Plan Template",
+   "options": "Property Payment Plan Template"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status"
+  },
+  {
+   "fieldname": "booking_status",
+   "fieldtype": "Select",
+   "label": "Booking Status",
+   "options": "\nBooked\nAvailable",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_em90u",
@@ -286,7 +286,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2023-02-14 18:47:57.953674",
+ "modified": "2023-02-14 23:27:20.563250",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",
