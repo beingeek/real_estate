@@ -32,3 +32,15 @@ class PropertyUnit(StatusUpdater):
 
 		if update:
 			self.db_set('booking_status', self.booking_status, update_modified=update_modified)
+
+	def set_unit_template_booked_by(self, update=False, status=None, update_modified=False):
+		bookings = frappe.get_all('Property Booking Order', {'property_unit': self.name, 'docstatus': 1})
+
+		if bookings and self.booking_status == 'Booked':
+			booked_by = frappe.get_value('Property Booking Order', bookings[0].name, 'customer')
+			self.booked_by = booked_by
+		elif self.booking_status == 'Available':
+			self.booked_by = None
+
+		if update:
+			self.db_set('booked_by', self.booked_by, update_modified=update_modified)
