@@ -22,7 +22,7 @@ class PaymentPlanType(Document):
 		transaction_item.delete()
 
 	def create_transaction_item(self):
-		property_settings = frappe.get_cached_doc('Property Settings')
+		property_settings = frappe.get_cached_doc('Real Estate Settings')
 
 		item_doc = frappe.new_doc('Item')
 		item_doc.update({
@@ -36,8 +36,8 @@ class PaymentPlanType(Document):
 			'is_purchase_item': 0,
 			'is_sales_item': 1,
 			'include_item_in_manufacturing': 0,
-			'stock_uom': property_settings.property_uom,
-			'uom': property_settings.property_uom,
+			'stock_uom': property_settings.property_transaction_uom,
+			'uom': property_settings.property_transaction_uom,
 			'item_group': property_settings.item_group
 		})
 

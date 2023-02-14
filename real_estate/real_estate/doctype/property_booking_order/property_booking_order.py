@@ -134,7 +134,8 @@ class PropertyBookingOrder(Document):
 
 	def update_property_unit(self):
 		property_unit = frappe.get_doc('Property Unit', self.property_unit)
-		property_unit.set_status(update=True)
+		property_unit.set_status(update=True, update_modified=True)
+		property_unit.set_unit_template_booked_by(update=True, update_modified=True)
 		property_unit.notify_update()
 
 
@@ -235,7 +236,7 @@ def make_sales_invoice(property_booking_order, schedule_row_name):
 		frappe.throw(_("Invalid Payment Schedule reference"))
 
 	invoice = frappe.new_doc('Sales Invoice')
-	property_settings = frappe.get_cached_doc('Property Settings')
+	property_settings = frappe.get_cached_doc('Real Estate Settings')
 
 	invoice.set_posting_time = 1
 	invoice.company = booking_doc.company
