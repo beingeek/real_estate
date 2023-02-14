@@ -37,7 +37,9 @@
   "column_break_vjpnz",
   "payment_plan_template",
   "status_section",
-  "booking_status"
+  "booking_status",
+  "column_break_em90u",
+  "booked_by"
  ],
  "fields": [
   {
@@ -263,6 +265,17 @@
   {
    "fieldname": "column_break_jnehk",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_em90u",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "booked_by",
+   "fieldtype": "Link",
+   "label": "Booked By",
+   "options": "Customer",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -273,7 +286,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2023-02-14 17:30:31.515260",
+ "modified": "2023-02-14 18:47:57.953674",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",
