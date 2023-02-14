@@ -3,6 +3,9 @@
 frappe.provide("real_estate");
 
 real_estate.PropertyUnit = class PropertyUnit extends frappe.ui.form.Controller {
+	onload() {
+		this.setup_queries();
+	}
 	setup() {
 		this.frm.custom_make_buttons = {
 			'Property Booking Order': 'Property Booking Order',
@@ -20,6 +23,17 @@ real_estate.PropertyUnit = class PropertyUnit extends frappe.ui.form.Controller 
 				this.make_property_booking_order();
 			}, __("Create"));
 		}
+	}
+
+	setup_queries() {
+		let me = this;
+		this.frm.set_query("block", function() {
+			return {
+				filters:  {
+					project: me.frm.doc.project
+				}
+			};
+		});
 	}
 
 	make_property_booking_order() {
