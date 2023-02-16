@@ -9,7 +9,7 @@
  "engine": "InnoDB",
  "field_order": [
   "template_name",
-  "type",
+  "property_type",
   "column_break_syojy",
   "project",
   "features_section",
@@ -35,13 +35,6 @@
    "fieldtype": "Select",
    "label": "Facing",
    "options": "\nNorth\nEast\nWest\nSouth"
-  },
-  {
-   "fieldname": "type",
-   "fieldtype": "Link",
-   "label": "Type",
-   "options": "Property Type",
-   "reqd": 1
   },
   {
    "fieldname": "column_break_4",
@@ -143,11 +136,18 @@
    "fieldname": "location_section",
    "fieldtype": "Section Break",
    "label": "Location"
+  },
+  {
+   "fieldname": "property_type",
+   "fieldtype": "Link",
+   "label": "Property Type",
+   "options": "Property Type",
+   "reqd": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2023-02-13 14:18:11.508982",
+ "modified": "2023-02-13 15:09:52.170580",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Unit Template",
@@ -167,7 +167,7 @@
    "write": 1
   }
  ],
- "search_fields": "type, project",
+ "search_fields": "property_type, project",
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": [],
