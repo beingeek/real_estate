@@ -6,11 +6,16 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import cint, getdate, flt, add_to_date, today
 from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
+from erpnext.accounts.party import get_address_display
+from frappe.contacts.doctype.address.address import get_default_address
+from frappe.contacts.doctype.contact.contact import get_default_contact
+from frappe.contacts.doctype.contact.contact import get_contact_details
 import json
 
 
 force_fields = [
 	'unit_number', 'property_type', 'project', 'block', 'block_name', 'floor',
+	'tax_cnic', 'customer_address_name', 'customer_address', 'contact_person', 'phone_no', 'mobile_no', 'contact_email'
 ]
 
 dont_update_if_missing = [
@@ -33,6 +38,7 @@ class PropertyBookingOrder(Document):
 
 	def set_missing_values(self, for_validate=False):
 		self.set_property_unit_details()
+		self.set_customer_details(for_validate=for_validate)
 
 	def on_submit(self):
 		self.update_property_unit()
@@ -44,6 +50,11 @@ class PropertyBookingOrder(Document):
 	def set_title(self):
 		self.title = self.customer_name or self.customer
 
+	def set_customer_details(self, for_validate=False):
+		customer_details = get_customer_details(self.customer)
+		for k, v in customer_details.items():
+			if self.meta.has_field(k) and (not self.get(k) or k in force_fields) and k not in dont_update_if_missing:
+				self.set(k, v)
 	def create_invoices_on_submit(self):
 		for payment in self.payment_schedule:
 			if getdate(payment.due_date) <= getdate(today()):
@@ -207,6 +218,34 @@ def get_installment_date(payment_plan, installment):
 
 	return start_date
 
+@frappe.whitelist()
+def get_customer_details(customer):
+	out = frappe._dict()
+
+	customer_details = frappe.get_doc('Customer', customer)
+	# Customer Name
+	out.customer_name = customer_details.customer_name
+	out.mobile_no = customer_details.mobile_no
+	out.contact_no = customer_details.mobile_no
+	out.phone_no = customer_details.phone_no
+	out.contact_email = customer_details.email_id
+
+	# Tax IDs
+	# out.tax_id = customer_details.tax_id
+	out.tax_cnic = customer_details.tax_cnic
+
+	# Customer Address
+	out.customer_address_name = get_default_address("Customer", customer_details.name)
+	if out.customer_address_name:
+		out.customer_address = get_address_display(out.customer_address_name)
+	# Contact
+	out.contact_person = get_default_contact("Customer", customer_details.name)
+	if out.contact_person:
+		contact_details = get_contact_details(out.contact_person)
+		out.contact_display = contact_details.contact_display
+		# out.update(get_contact_details(out.contact_person))
+
+	return out
 
 @frappe.whitelist()
 def get_property_unit_details(property_unit):

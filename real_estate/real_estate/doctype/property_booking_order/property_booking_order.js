@@ -113,6 +113,14 @@ real_estate.PropertyBookingOrder = class PropertyBookingOrder extends frappe.ui.
 		});
 	}
 
+	customer_address_name() {
+		erpnext.utils.get_address_display(this.frm, 'customer_address_name', 'customer_address');
+	}
+
+	contact_person() {
+		erpnext.utils.get_contact_details(this.frm);
+	}
+
 }
 
 extend_cscript(cur_frm.cscript, new real_estate.PropertyBookingOrder({frm: cur_frm}));
