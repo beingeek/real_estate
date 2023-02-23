@@ -222,16 +222,15 @@ def get_installment_date(payment_plan, installment):
 def get_customer_details(customer):
 	out = frappe._dict()
 
-	customer_details = frappe.get_doc('Customer', customer)
 	# Customer Name
-	out.customer_name = customer_details.customer_name
+	out.customer_name = frappe.get_cached_value('Customer', customer, 'customer_name')
 
 	# Tax IDs
 	# out.tax_id = customer_details.tax_id
-	out.tax_cnic = customer_details.tax_cnic
+	out.tax_cnic = frappe.get_cached_value('Customer', customer, 'tax_cnic')
 
 	# Contact
-	out.contact_person = get_default_contact("Customer", customer_details.name)
+	out.contact_person = get_default_contact("Customer", customer)
 	if out.contact_person:
 		contact_details = get_contact_details(out.contact_person)
 		out.contact_mobile = contact_details.contact_mobile
