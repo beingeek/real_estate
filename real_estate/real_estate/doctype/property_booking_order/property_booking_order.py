@@ -230,10 +230,6 @@ def get_customer_details(customer):
 	# out.tax_id = customer_details.tax_id
 	out.tax_cnic = customer_details.tax_cnic
 
-	# Customer Address
-	out.customer_address_name = get_default_address("Customer", customer_details.name)
-	if out.customer_address_name:
-		out.customer_address = get_address_display(out.customer_address_name)
 	# Contact
 	out.contact_person = get_default_contact("Customer", customer_details.name)
 	if out.contact_person:
@@ -241,8 +237,6 @@ def get_customer_details(customer):
 		out.contact_mobile = contact_details.contact_mobile
 		out.contact_phone = contact_details.contact_phone
 		out.contact_email = contact_details.contact_email
-		out.contact_display = contact_details.contact_display
-		# out.update(get_contact_details(out.contact_person))
 
 	return out
 
