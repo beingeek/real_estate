@@ -17,18 +17,9 @@
  ],
  "fields": [
   {
-   "fieldname": "column_break_3",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "uom",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "item_group",
-   "fieldtype": "Link",
-   "label": "Property Item Group",
-   "options": "Item Group"
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Invoice Configuration"
   },
   {
    "fieldname": "tax_template",
@@ -37,9 +28,8 @@
    "options": "Sales Taxes and Charges Template"
   },
   {
-   "fieldname": "section_break_1",
-   "fieldtype": "Section Break",
-   "label": "Invoice Configuration"
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
   },
   {
    "fieldname": "section_break_4",
@@ -53,6 +43,16 @@
    "options": "UOM"
   },
   {
+   "fieldname": "uom",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "item_group",
+   "fieldtype": "Link",
+   "label": "Property Item Group",
+   "options": "Item Group"
+  },
+  {
    "fieldname": "default_area_unit",
    "fieldtype": "Link",
    "label": "Default Area Unit",
@@ -62,7 +62,7 @@
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2023-02-14 18:57:53.019732",
+ "modified": "2023-02-16 13:22:48.000636",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate Settings",
