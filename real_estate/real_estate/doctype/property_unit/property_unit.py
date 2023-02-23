@@ -16,7 +16,7 @@ class PropertyUnit(StatusUpdater):
 	def validate_block_project(self):
 		block_project = frappe.get_value('Block' ,self.block, 'project')
 		if self.project and self.project != block_project:
-			frappe.throw(_('Block is not linked with this Project'))
+			frappe.throw(_('Block {0} does not belong to Project {1}').format(self.block_name, self.project))
 
 	def validate_unit_template_project(self):
 		unit_template_project = frappe.get_cached_value('Unit Template' ,self.unit_template, 'project')
