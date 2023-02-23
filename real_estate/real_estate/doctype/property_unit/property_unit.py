@@ -8,9 +8,9 @@ from erpnext.controllers.status_updater import StatusUpdater
 
 class PropertyUnit(StatusUpdater):
 	def validate(self):
-		self.set_status()
 		self.validate_block_project()
 		self.validate_unit_template_project()
+		self.set_status()
 
 	def validate_block_project(self):
 		block_project = frappe.get_value('Block' ,self.block, 'project')

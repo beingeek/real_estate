@@ -145,8 +145,8 @@ class PropertyBookingOrder(Document):
 
 	def update_property_unit(self):
 		property_unit = frappe.get_doc('Property Unit', self.property_unit)
-		property_unit.set_status(update=True, update_modified=True)
 		property_unit.set_unit_template_booked_by(update=True, update_modified=True)
+		property_unit.set_status(update=True, update_modified=True)
 		property_unit.notify_update()
 
 
