@@ -8,6 +8,7 @@ from erpnext.controllers.status_updater import StatusUpdater
 
 class PropertyUnit(StatusUpdater):
 	def validate(self):
+		self.set_address_display()
 		self.validate_block_project()
 		self.validate_unit_template_project()
 		self.set_status()
@@ -21,6 +22,11 @@ class PropertyUnit(StatusUpdater):
 		unit_template_project = frappe.get_cached_value('Unit Template' ,self.unit_template, 'project')
 		if self.project and self.project != unit_template_project:
 			frappe.throw(_('Unit Template {0} does not belong to Project {1}').format(self.unit_template, self.project))
+
+	def set_address_display(self):
+		if self.address:
+			from frappe.contacts.doctype.address.address import get_address_display
+			self.address_display = get_address_display(self.address)
 
 	def set_status(self, update=False, status=None, update_modified=False):
 		bookings = frappe.get_all('Property Booking Order', {'property_unit': self.name, 'docstatus': 1})
