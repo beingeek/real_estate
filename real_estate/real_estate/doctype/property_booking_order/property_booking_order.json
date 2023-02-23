@@ -19,7 +19,6 @@
   "expected_possession_date",
   "amended_from",
   "customer_details_section",
-  "contact_no",
   "column_break_6m3hy",
   "tax_cnic",
   "unit_details_section",
@@ -51,8 +50,8 @@
   "contact_person",
   "contact_display",
   "column_break_67uqf",
-  "phone_no",
-  "mobile_no",
+  "contact_phone",
+  "contact_mobile",
   "contact_email",
   "status_tab",
   "booking_status",
@@ -143,13 +142,6 @@
    "fieldtype": "Currency",
    "label": "Total Price",
    "reqd": 1
-  },
-  {
-   "fetch_from": "customer.mobile_no",
-   "fetch_if_empty": 1,
-   "fieldname": "contact_no",
-   "fieldtype": "Data",
-   "label": "Contact No"
   },
   {
    "fieldname": "column_break_15",
@@ -358,20 +350,6 @@
   },
   {
    "allow_on_submit": 1,
-   "fieldname": "phone_no",
-   "fieldtype": "Data",
-   "label": "Phone No",
-   "read_only": 1
-  },
-  {
-   "allow_on_submit": 1,
-   "fieldname": "mobile_no",
-   "fieldtype": "Data",
-   "label": "Mobile No",
-   "read_only": 1
-  },
-  {
-   "allow_on_submit": 1,
    "fieldname": "contact_email",
    "fieldtype": "Data",
    "label": "Contact Email",
@@ -381,10 +359,10 @@
   },
   {
    "fetch_from": "customer.tax_cnic",
-   "fetch_if_empty": 1,
    "fieldname": "tax_cnic",
    "fieldtype": "Data",
-   "label": "CNIC"
+   "label": "CNIC",
+   "read_only": 1
   },
   {
    "allow_on_submit": 1,
@@ -392,12 +370,26 @@
    "fieldtype": "Data",
    "label": "Contact Name",
    "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "contact_mobile",
+   "fieldtype": "Data",
+   "label": "Mobile No",
+   "read_only": 1
+  },
+  {
+   "allow_on_submit": 1,
+   "fieldname": "contact_phone",
+   "fieldtype": "Data",
+   "label": "Phone No",
+   "read_only": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2023-02-16 17:38:59.490747",
+ "modified": "2023-02-23 14:14:17.730752",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Booking Order",

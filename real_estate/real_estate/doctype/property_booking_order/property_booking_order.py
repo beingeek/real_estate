@@ -15,7 +15,7 @@ import json
 
 force_fields = [
 	'unit_number', 'property_type', 'project', 'block', 'block_name', 'floor',
-	'tax_cnic', 'customer_address_name', 'customer_address', 'contact_person', 'phone_no', 'mobile_no', 'contact_email'
+	'tax_cnic', 'contact_mobile', 'contact_phone', 'contact_email'
 ]
 
 dont_update_if_missing = [
@@ -225,10 +225,6 @@ def get_customer_details(customer):
 	customer_details = frappe.get_doc('Customer', customer)
 	# Customer Name
 	out.customer_name = customer_details.customer_name
-	out.mobile_no = customer_details.mobile_no
-	out.contact_no = customer_details.mobile_no
-	out.phone_no = customer_details.phone_no
-	out.contact_email = customer_details.email_id
 
 	# Tax IDs
 	# out.tax_id = customer_details.tax_id
@@ -242,6 +238,9 @@ def get_customer_details(customer):
 	out.contact_person = get_default_contact("Customer", customer_details.name)
 	if out.contact_person:
 		contact_details = get_contact_details(out.contact_person)
+		out.contact_mobile = contact_details.contact_mobile
+		out.contact_phone = contact_details.contact_phone
+		out.contact_email = contact_details.contact_email
 		out.contact_display = contact_details.contact_display
 		# out.update(get_contact_details(out.contact_person))
 
