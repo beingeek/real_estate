@@ -6,7 +6,7 @@ app_publisher = "ParaLogic"
 app_description = "App for Real Estate Automation"
 app_email = "info@paralogic.io"
 app_license = "GNU General Public License (v3)"
-required_apps = ["erpnext"]
+required_apps = ["ParaLogicTech/erpnext"]
 
 doctype_js = {"Project": "overrides/project_hooks.js"}
 
