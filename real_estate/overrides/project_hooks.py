@@ -51,6 +51,9 @@ def set_payment_plan_dates_update_schedule(project, property_trigger, trigger_da
 			.where(ppp.start_date.isnull())
 	).run(as_dict=True)
 
+	if not payment_plan_rows:
+		frappe.msgprint(_("No Triggers row in Payment Plan were created"))
+
 	for d in payment_plan_rows:
 		frappe.db.set_value('Property Payment Plan', d.payment_plan_row_name, 'start_date', trigger_date)
 		payment_plan_row = frappe.get_cached_doc('Property Payment Plan', d.payment_plan_row_name)
