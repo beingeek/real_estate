@@ -32,7 +32,7 @@ real_estate.PropertyBookingOrder = class PropertyBookingOrder extends frappe.ui.
 	}
 
 	set_payment_plan() {
-
+		let me = this;
 		frappe.call({
 			method: "real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template.get_payment_plan",
 			args: {
