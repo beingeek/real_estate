@@ -44,7 +44,7 @@ real_estate.PropertyProjectController = class PropertyProjectController extends 
 			],
 			primary_action(values) {
 				frappe.call({
-					method: "real_estate.enhancements.project.create_trigger_row",
+					method: "real_estate.overrides.project_hooks.create_trigger_row",
 					args: {
 						project: frm.doc.name,
 						project_trigger: values.trigger_type,
