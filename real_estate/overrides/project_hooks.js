@@ -23,6 +23,9 @@ real_estate.PropertyProjectController = class PropertyProjectController extends 
 						}, __('Trigger'));
 				});
 			}
+			me.frm.add_custom_button("Create Property Units", function() {
+				me.create_property_unit(me.frm)
+			});
 		}
 	}
 
@@ -62,6 +65,89 @@ real_estate.PropertyProjectController = class PropertyProjectController extends 
 		});
 		dialog.show();
 	}
+
+	create_property_unit(frm) {
+		let dialog = new frappe.ui.Dialog({
+			title: __("Create Property Unit"),
+			size: "extra-large",
+			fields: [
+				{
+					fieldname: "unit_template", fieldtype: "Link", options: "Unit Template",
+					label: "Unit Template", reqd: 1,
+				},
+				{
+					fieldname: "property_units", fieldtype: "Table",
+					label: "Property Units", reqd: 1,
+					fields: [
+						{
+							label: __("Unit Number"),
+							fieldname: "unit_number",
+							fieldtype: "Data",
+							options: "",
+							reqd: 1,
+							in_list_view: 1,
+						},
+						{
+							label: __("Project"),
+							fieldname: "unit_number",
+							fieldtype: "Link",
+							options: "Project",
+							reqd: 1,
+							in_list_view: 1,
+						},
+						{
+							label: __("Floor"),
+							fieldname: "floor",
+							fieldtype: "Link",
+							options: "floor",
+							reqd: 1,
+							in_list_view: 1,
+						},
+						{
+							label: __("Property Type"),
+							fieldname: "property_type",
+							fieldtype: "Link",
+							options: "Property Type",
+							reqd: 1,
+							in_list_view: 1,
+						},
+						{
+							label: __("Block"),
+							fieldname: "block",
+							fieldtype: "Link",
+							options: "block",
+							reqd: 1,
+							in_list_view: 1,
+						}
+					],
+					data: [],
+				},
+				// {
+				// 	fieldname: "trigger_date", fieldtype: "Date", options: "",
+				// 	label: "Date", default: '', reqd: 1,
+				// }
+			],
+			primary_action(values) {
+				// frappe.call({
+				// 	method: "real_estate.overrides.project_hooks.create_trigger_row",
+				// 	args: {
+				// 		project: frm.doc.name,
+				// 		project_trigger: values.trigger_type,
+				// 		trigger_date: values.trigger_date
+				// 	},
+				// 	callback: function(r) {
+				// 		if (r.message && !r.exc) {
+
+				// 		}
+				// 	}
+				// });
+				// dialog.hide();
+				// frm.reload_doc();
+			}
+		});
+		dialog.show();
+	}
+
  };
 
 extend_cscript(cur_frm.cscript, new real_estate.PropertyProjectController({frm: cur_frm}));
