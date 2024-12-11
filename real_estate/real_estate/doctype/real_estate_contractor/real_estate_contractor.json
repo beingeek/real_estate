@@ -1,25 +1,69 @@
 {
  "actions": [],
- "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-12-10 21:03:03.737084",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "contractor"
+  "contractor_name",
+  "column_break_uaoc",
+  "naming_series",
+  "section_break_eitg",
+  "tax_id",
+  "column_break_uhyc",
+  "contact",
+  "email"
  ],
  "fields": [
   {
-   "fieldname": "contractor",
+   "fieldname": "contractor_name",
    "fieldtype": "Data",
-   "label": "Contractor"
+   "in_list_view": 1,
+   "label": "Contractor Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_uaoc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "CONTRACTOR-"
+  },
+  {
+   "fieldname": "section_break_eitg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_uhyc",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-10 21:03:18.999899",
+ "modified": "2024-12-11 17:20:05.256204",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate Contractor",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
