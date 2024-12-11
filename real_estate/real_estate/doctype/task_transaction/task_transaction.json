@@ -1,0 +1,46 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-11 16:35:00.763111",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "transaction_document",
+  "column_break_dqjw",
+  "transaction_document_type"
+ ],
+ "fields": [
+  {
+   "fieldname": "transaction_document",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Transaction Document",
+   "link_filters": "[[\"DocType\",\"name\",\"in\",[\"Purchase Order\",\"Purchase Invoice\",\"Purchase Receipt\"]]]",
+   "options": "DocType"
+  },
+  {
+   "fieldname": "transaction_document_type",
+   "fieldtype": "Dynamic Link",
+   "in_list_view": 1,
+   "label": "Transaction Document Type",
+   "options": "transaction_document"
+  },
+  {
+   "fieldname": "column_break_dqjw",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-11 16:56:28.782589",
+ "modified_by": "Administrator",
+ "module": "Real Estate",
+ "name": "Task Transaction",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
