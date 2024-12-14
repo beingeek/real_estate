@@ -72,3 +72,27 @@ def set_payment_plan_dates_update_schedule(project, property_trigger, trigger_da
 			for i, d in enumerate(pbo.payment_schedule):
 				d.idx = i + 1
 			pbo.update_child_table("payment_schedule")
+
+
+@frappe.whitelist()
+def create_property_units(property_units):
+	for property_unit in frappe.parse_json(property_units):
+		new_property_unit = frappe.new_doc("Property Unit")
+
+		new_property_unit.update({
+			"unit_template": property_unit.get("unit_template"), 
+			"unit_number": property_unit.get("unit_number"), 
+			"property_type": property_unit.get("property_type"), 
+			"company": property_unit.get("company"),
+			"project": property_unit.get("project"),
+			"area_unit": property_unit.get("area_unit"),
+			"area": property_unit.get("area"),
+			"facing": property_unit.get("facing"),
+			"is_road_side": property_unit.get("is_road_side"),
+			"is_corner": property_unit.get("is_corner"),
+			"price": property_unit.get("price"),
+			"block": property_unit.get("block"),
+			"floor": property_unit.get("floor")
+		})
+		new_property_unit.insert(ignore_permissions=True)
+		frappe.msgprint((_("{0} created").format(frappe.get_desk_link("Property Unit", new_property_unit.name))))

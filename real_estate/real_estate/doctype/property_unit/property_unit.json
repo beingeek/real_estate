@@ -279,6 +279,7 @@
    "read_only": 1
   }
  ],
+ "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [
   {
@@ -287,7 +288,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2023-02-23 15:08:39.291847",
+ "modified": "2024-12-10 18:39:10.360550",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",
