@@ -1,22 +1,64 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series:",
  "creation": "2024-12-10 21:01:26.269472",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "investor_name"
+  "investor_name",
+  "column_break_dldm",
+  "naming_series",
+  "section_break_hcho",
+  "tax_id",
+  "column_break_ovlb",
+  "contact",
+  "email"
  ],
  "fields": [
   {
    "fieldname": "investor_name",
    "fieldtype": "Data",
    "label": "Investor Name"
+  },
+  {
+   "fieldname": "column_break_dldm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "INVESTOR-"
+  },
+  {
+   "fieldname": "section_break_hcho",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "column_break_ovlb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-12-10 21:01:57.552184",
+ "modified": "2024-12-14 13:09:48.136645",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate Investor",
