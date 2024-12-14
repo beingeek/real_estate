@@ -1,7 +1,8 @@
 {
  "charts": [],
- "content": "[{\"id\":\"DG0Ian-p1V\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"id\":\"s9eapXLtB3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Unit Booked\",\"col\":3}},{\"id\":\"BIXGlnQ6UM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Units Available\",\"col\":3}},{\"id\":\"VrjmhCtFlc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Booking Order\",\"col\":3}},{\"id\":\"0T-WQ9yrxB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"XzrhJIheYy\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tgr8Y5r5xm\",\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"id\":\"N6faepQyVL\",\"type\":\"card\",\"data\":{\"card_name\":\"Templates\",\"col\":3}},{\"id\":\"tg5jjEw4tb\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
+ "content": "[{\"id\":\"DG0Ian-p1V\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Real Estate</span>\",\"col\":12}},{\"id\":\"s9eapXLtB3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Unit Booked\",\"col\":4}},{\"id\":\"BIXGlnQ6UM\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Units Available\",\"col\":4}},{\"id\":\"VrjmhCtFlc\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Property Booking Order\",\"col\":4}},{\"id\":\"0T-WQ9yrxB\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Project\",\"col\":3}},{\"id\":\"w0z9SvhEKG\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Task\",\"col\":3}},{\"id\":\"jYPrF5UKyw\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Investors\",\"col\":3}},{\"id\":\"febOXBKGjJ\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Contractors\",\"col\":3}},{\"id\":\"XzrhJIheYy\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"tgr8Y5r5xm\",\"type\":\"card\",\"data\":{\"card_name\":\"Property Booking\",\"col\":3}},{\"id\":\"N6faepQyVL\",\"type\":\"card\",\"data\":{\"card_name\":\"Templates\",\"col\":3}},{\"id\":\"tg5jjEw4tb\",\"type\":\"card\",\"data\":{\"card_name\":\"Settings\",\"col\":3}}]",
  "creation": "2022-12-30 17:47:24.454862",
+ "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
  "for_user": "",
@@ -146,10 +147,11 @@
    "type": "Link"
   }
  ],
- "modified": "2023-02-14 15:31:26.236529",
+ "modified": "2024-12-14 13:17:49.053644",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Real Estate",
+ "number_cards": [],
  "owner": "Administrator",
  "parent_page": "",
  "public": 1,
@@ -169,9 +171,33 @@
   {
    "color": "Grey",
    "doc_view": "List",
+   "label": "Task",
+   "link_to": "Task",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Investors",
+   "link_to": "Real Estate Investor",
+   "stats_filter": "[]",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
    "label": "Project",
    "link_to": "Project",
    "stats_filter": "",
+   "type": "DocType"
+  },
+  {
+   "color": "Grey",
+   "doc_view": "List",
+   "label": "Contractors",
+   "link_to": "Real Estate Contractor",
+   "stats_filter": "[]",
    "type": "DocType"
   },
   {
