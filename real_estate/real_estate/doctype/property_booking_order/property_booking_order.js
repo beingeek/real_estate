@@ -7,6 +7,7 @@ real_estate.PropertyBookingOrder = class PropertyBookingOrder extends frappe.ui.
 	refresh() {
 		erpnext.hide_company();
 		this.hide_customer_name();
+		this.set_custom_buttons()
 	}
 
 	hide_customer_name() {
@@ -119,6 +120,19 @@ real_estate.PropertyBookingOrder = class PropertyBookingOrder extends frappe.ui.
 
 	contact_person() {
 		erpnext.utils.get_contact_details(this.frm);
+	}
+
+	set_custom_buttons() {
+		let me = this;
+		if (this.frm.doc.docstatus == "1"){
+			me.frm.add_custom_button(__("Send Payment Request Email"), () => {
+				frappe.msgprint("Sending")
+			});
+	
+			me.frm.add_custom_button(__("Payment Gateway"), () => {
+				frappe.msgprint("Redirecting to Payment Gateway")
+			});
+		}
 	}
 
 }
