@@ -84,8 +84,8 @@ real_estate.PropertyProjectController = class PropertyProjectController extends 
 				},
 
 				{
-					fieldname: "no_of_units", fieldtype: "Int", label: "No. of Units",
-					default: 1, reqd: 1,
+					fieldname: "number_of_units", fieldtype: "Int", label: "Number of Units",
+					default: frm.doc.number_of_units, reqd: 1,
 				},
 				{
 					fieldname: "add_property_units", fieldtype: "Button", label: "Add Property Units"
@@ -230,11 +230,20 @@ real_estate.PropertyProjectController = class PropertyProjectController extends 
 
 		dialog.get_input("add_property_units").on("click", function () {
 			let unit_template = dialog.get_value("unit_template");
-			let no_of_units = dialog.get_value("no_of_units");
+			let number_of_units = dialog.get_value("number_of_units");
 			let payment_plan_template = dialog.get_value("payment_plan_template");
 
+			if (!unit_template) {
+				frappe.throw(__("Please select Unit Template"));
+			}
+			if (!number_of_units) {
+				frappe.throw(__("Please enter Number of Units"));
+			}
+
+
 			frappe.db.get_doc("Unit Template", unit_template).then(unit_template_doc => {
-				for (let i = 0; i < no_of_units; i++) {
+				dialog.fields_dict.property_units.df.data = [];
+				for (let i = 0; i < number_of_units; i++) {
 					let unit_number = i + 1;
 					dialog.fields_dict.property_units.df.data.push({
 						unit_template: unit_template,
