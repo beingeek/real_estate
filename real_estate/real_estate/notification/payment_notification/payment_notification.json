@@ -1,0 +1,30 @@
+{
+ "attach_print": 0,
+ "channel": "Email",
+ "condition": "doc.status == \"Unpaid\"",
+ "creation": "2024-12-14 13:24:34.633989",
+ "date_changed": "due_date",
+ "days_in_advance": 5,
+ "docstatus": 0,
+ "doctype": "Notification",
+ "document_type": "Sales Invoice",
+ "enabled": 1,
+ "event": "Days Before",
+ "idx": 0,
+ "is_standard": 1,
+ "message": "<h3>Upcoming Payment</h3>\n\n<p>Dear Customer {{ doc.customer }} you have a due payment in 5 days on date {{ doc.due_date }} </p>\n\n<p>Amount: {{ doc.grand_total }}</p>\n",
+ "message_type": "Markdown",
+ "modified": "2024-12-14 13:26:17.501930",
+ "modified_by": "Administrator",
+ "module": "Real Estate",
+ "name": "Payment Notification",
+ "owner": "Administrator",
+ "recipients": [
+  {
+   "receiver_by_document_field": "contact_email"
+  }
+ ],
+ "send_system_notification": 0,
+ "send_to_all_assignees": 0,
+ "subject": "Upcoming Payment Alert"
+}
