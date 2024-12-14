@@ -6,10 +6,7 @@ from frappe import _
 from frappe.model.document import Document
 from frappe.utils import cint, getdate, flt, add_to_date, today
 from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
-from erpnext.accounts.party import get_address_display
-from frappe.contacts.doctype.address.address import get_default_address
-from frappe.contacts.doctype.contact.contact import get_default_contact
-from frappe.contacts.doctype.contact.contact import get_contact_details
+from frappe.contacts.doctype.contact.contact import get_default_contact, get_contact_details
 import json
 
 
