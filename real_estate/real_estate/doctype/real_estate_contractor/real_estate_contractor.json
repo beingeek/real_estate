@@ -1,0 +1,97 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-12-10 21:03:03.737084",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "contractor_name",
+  "column_break_uaoc",
+  "naming_series",
+  "section_break_eitg",
+  "tax_id",
+  "column_break_uhyc",
+  "contact",
+  "email"
+ ],
+ "fields": [
+  {
+   "fieldname": "contractor_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Contractor Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_uaoc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Naming Series",
+   "options": "CONTRACTOR-"
+  },
+  {
+   "fieldname": "section_break_eitg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "tax_id",
+   "fieldtype": "Data",
+   "label": "Tax ID"
+  },
+  {
+   "fieldname": "contact",
+   "fieldtype": "Data",
+   "label": "Contact"
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "column_break_uhyc",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "group": "Real Estate",
+   "link_doctype": "Task",
+   "link_fieldname": "contractor"
+  },
+  {
+   "group": "Real Estate",
+   "link_doctype": "Project",
+   "link_fieldname": "contractor",
+   "table_fieldname": "contractors"
+  }
+ ],
+ "modified": "2024-12-14 12:59:47.753931",
+ "modified_by": "Administrator",
+ "module": "Real Estate",
+ "name": "Real Estate Contractor",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

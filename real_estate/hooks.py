@@ -43,6 +43,17 @@ fixtures = [
 	}
 ]
 
+# Installation
+# ------------
+after_install = "real_estate.install.setup"
+# after_migrate = "real_estate.install.setup"
+
+
+# Uninstallation
+# ------------
+
+# before_uninstall = "real_estate.uninstall.before_uninstall"
+# after_uninstall = "real_estate.uninstall.after_uninstall"
 
 # Includes in <head>
 # ------------------
@@ -95,18 +106,6 @@ fixtures = [
 #	"methods": "real_estate.utils.jinja_methods",
 #	"filters": "real_estate.utils.jinja_filters"
 # }
-
-# Installation
-# ------------
-
-# before_install = "real_estate.install.before_install"
-# after_install = "real_estate.install.after_install"
-
-# Uninstallation
-# ------------
-
-# before_uninstall = "real_estate.uninstall.before_uninstall"
-# after_uninstall = "real_estate.uninstall.after_uninstall"
 
 # Desk Notifications
 # ------------------

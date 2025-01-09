@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-12-14 12:57:46.308453",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_vra3",
+  "contractor"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_vra3",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "contractor",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Contractor",
+   "options": "Real Estate Contractor",
+   "reqd": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-12-14 12:58:19.197310",
+ "modified_by": "Administrator",
+ "module": "Real Estate",
+ "name": "Real Estate Contractors",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
