@@ -39,7 +39,9 @@
   "status_section",
   "booking_status",
   "column_break_em90u",
-  "booked_by"
+  "booked_by",
+  "payment_schedule_tab",
+  "payment_schedule"
  ],
  "fields": [
   {
@@ -279,6 +281,18 @@
    "fieldtype": "Table",
    "label": "Payment Plan",
    "options": "Property Payment Plan"
+  },
+  {
+   "fieldname": "payment_schedule_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment Schedule"
+  },
+  {
+   "fieldname": "payment_schedule",
+   "fieldtype": "Table",
+   "label": "Payment Schedule",
+   "no_copy": 1,
+   "options": "Property Payment Schedule"
   }
  ],
  "in_create": 1,
@@ -290,7 +304,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2025-01-10 08:56:23.646024",
+ "modified": "2025-01-10 09:33:34.328185",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",

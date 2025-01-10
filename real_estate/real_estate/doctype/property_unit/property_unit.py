@@ -5,7 +5,7 @@ import frappe
 from frappe import _
 from erpnext.controllers.status_updater import StatusUpdaterERP
 from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
-
+from real_estate.real_estate.doctype.property_booking_order.property_booking_order import get_payment_schedule
 
 class PropertyUnit(StatusUpdaterERP):
 	def validate(self):
@@ -13,6 +13,7 @@ class PropertyUnit(StatusUpdaterERP):
 		self.validate_block_project()
 		self.validate_unit_template_project()
 		self.set_payment_plan()
+		self.set_payment_schedule()
 		self.set_status()
 
 	def validate_block_project(self):
@@ -57,3 +58,9 @@ class PropertyUnit(StatusUpdaterERP):
 			payment_plan = get_payment_plan(self.payment_plan_template)
 			for d in payment_plan:
 				self.append("payment_plan", d)
+
+	def set_payment_schedule(self):
+		payment_schedule = get_payment_schedule(self.payment_plan)
+		self.payment_schedule = []
+		for d in payment_schedule:
+			self.append("payment_schedule", d)
