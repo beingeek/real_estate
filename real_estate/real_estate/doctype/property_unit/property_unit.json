@@ -34,12 +34,14 @@
   "address_display",
   "pricing_section",
   "price",
-  "column_break_vjpnz",
   "payment_plan_template",
+  "payment_plan",
   "status_section",
   "booking_status",
   "column_break_em90u",
-  "booked_by"
+  "booked_by",
+  "payment_schedule_tab",
+  "payment_schedule"
  ],
  "fields": [
   {
@@ -184,10 +186,6 @@
    "no_copy": 1
   },
   {
-   "fieldname": "column_break_vjpnz",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "location_section",
    "fieldtype": "Section Break",
    "label": "Location"
@@ -277,6 +275,24 @@
    "no_copy": 1,
    "options": "Customer",
    "read_only": 1
+  },
+  {
+   "fieldname": "payment_plan",
+   "fieldtype": "Table",
+   "label": "Payment Plan",
+   "options": "Property Payment Plan"
+  },
+  {
+   "fieldname": "payment_schedule_tab",
+   "fieldtype": "Tab Break",
+   "label": "Payment Schedule"
+  },
+  {
+   "fieldname": "payment_schedule",
+   "fieldtype": "Table",
+   "label": "Payment Schedule",
+   "no_copy": 1,
+   "options": "Property Payment Schedule"
   }
  ],
  "in_create": 1,
@@ -288,7 +304,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2024-12-10 18:39:10.360550",
+ "modified": "2025-01-10 09:33:34.328185",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",
