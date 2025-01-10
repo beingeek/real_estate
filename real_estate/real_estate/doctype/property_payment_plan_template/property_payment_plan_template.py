@@ -36,6 +36,8 @@ def get_payment_plan(plan_template):
 			'payment_plan_type': d.payment_plan_type,
 			'is_installment': d.is_installment,
 			'no_of_installments': d.no_of_installments,
+			'start_date': d.start_date,
+			'invoice_amount': d.invoice_amount
 		})
 	return payment_plan
 
