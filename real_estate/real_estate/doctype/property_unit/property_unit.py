@@ -4,6 +4,7 @@
 import frappe
 from frappe import _
 from erpnext.controllers.status_updater import StatusUpdaterERP
+from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
 
 
 class PropertyUnit(StatusUpdaterERP):
@@ -11,6 +12,7 @@ class PropertyUnit(StatusUpdaterERP):
 		self.set_address_display()
 		self.validate_block_project()
 		self.validate_unit_template_project()
+		self.set_payment_plan()
 		self.set_status()
 
 	def validate_block_project(self):
@@ -49,3 +51,9 @@ class PropertyUnit(StatusUpdaterERP):
 
 		if update:
 			self.db_set('booked_by', self.booked_by, update_modified=update_modified)
+
+	def set_payment_plan(self):
+		if self.payment_plan_template and not self.payment_plan:
+			payment_plan = get_payment_plan(self.payment_plan_template)
+			for d in payment_plan:
+				self.append("payment_plan", d)

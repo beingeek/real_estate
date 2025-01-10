@@ -34,8 +34,8 @@
   "address_display",
   "pricing_section",
   "price",
-  "column_break_vjpnz",
   "payment_plan_template",
+  "payment_plan",
   "status_section",
   "booking_status",
   "column_break_em90u",
@@ -184,10 +184,6 @@
    "no_copy": 1
   },
   {
-   "fieldname": "column_break_vjpnz",
-   "fieldtype": "Column Break"
-  },
-  {
    "fieldname": "location_section",
    "fieldtype": "Section Break",
    "label": "Location"
@@ -277,6 +273,12 @@
    "no_copy": 1,
    "options": "Customer",
    "read_only": 1
+  },
+  {
+   "fieldname": "payment_plan",
+   "fieldtype": "Table",
+   "label": "Payment Plan",
+   "options": "Property Payment Plan"
   }
  ],
  "in_create": 1,
@@ -288,7 +290,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2024-12-10 18:39:10.360550",
+ "modified": "2025-01-10 08:56:23.646024",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",
