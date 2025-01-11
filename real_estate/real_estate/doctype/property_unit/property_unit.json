@@ -30,9 +30,10 @@
   "is_road_side",
   "location_section",
   "address",
+  "map_diagram",
+  "out_door_map_diagram",
   "column_break_jnehk",
   "address_display",
-  "map_diagram",
   "pricing_section",
   "price",
   "payment_plan_template",
@@ -299,8 +300,14 @@
    "fieldname": "map_diagram",
    "fieldtype": "Attach Image",
    "label": "Map Diagram"
+  },
+  {
+   "fieldname": "out_door_map_diagram",
+   "fieldtype": "Attach Image",
+   "label": "Out Door Map Diagram"
   }
  ],
+ "image_field": "map_diagram",
  "in_create": 1,
  "index_web_pages_for_search": 1,
  "links": [
@@ -310,7 +317,7 @@
    "link_fieldname": "property_unit"
   }
  ],
- "modified": "2025-01-11 19:58:47.790555",
+ "modified": "2025-01-11 22:49:41.574642",
  "modified_by": "Administrator",
  "module": "Real Estate",
  "name": "Property Unit",
