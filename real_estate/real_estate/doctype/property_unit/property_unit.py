@@ -2,6 +2,7 @@
 # For license information, please see license.txt
 
 import frappe
+import erpnext
 from frappe import _
 from erpnext.controllers.status_updater import StatusUpdaterERP
 from real_estate.real_estate.doctype.property_payment_plan_template.property_payment_plan_template import get_payment_plan
@@ -30,6 +31,9 @@ class PropertyUnit(StatusUpdaterERP):
 		if self.address:
 			from frappe.contacts.doctype.address.address import get_address_display
 			self.address_display = get_address_display(self.address)
+
+	def before_print(self, print_settings=None):
+		self.company_address_doc = erpnext.get_company_address_doc(self)
 
 	def set_status(self, update=False, status=None, update_modified=False):
 		bookings = frappe.get_all('Property Booking Order', {'property_unit': self.name, 'docstatus': 1})
